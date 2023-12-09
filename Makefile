@@ -1,7 +1,7 @@
 NAME    = cub3D
 CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
-SRCS    = main.c
+SRCS    = main.c read_mapfile.c
 OBJS    = $(addprefix obj/, $(SRCS:.c=.o))
 GREEN   = \033[0;32m
 RED     = \033[0;31m
@@ -13,11 +13,11 @@ obj:
 	@mkdir -p obj
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -o $@ ./include/libft/libft.a
 	@echo "$(GREEN)[✓]$(CODE)"
 
 obj/%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS)  -c $< -o $@
 	
 clean:
 	@rm -rf $(OBJS)

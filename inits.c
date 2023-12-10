@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/10 09:21:29 by sguntepe         ###   ########.fr       */
+/*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
+/*   Updated: 2023/12/10 09:22:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-typedef struct s_cub
+void	inits(t_cub	*cub3d, int fd)
 {
-	char	**map;
-}	t_cub;
-
-char	*read_mapfile(int fd);
-char	*ft_strjoin_(char const *s1, char const *s2, char **leak);
-void	control_components(char **map);
-void	inits(t_cub	*cub3d, int fd);
-void	map_control(t_cub	*cub3d);
-
-#endif
+	cub3d->map = read_mapfile(fd);
+}

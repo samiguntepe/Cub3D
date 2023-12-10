@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:42 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/10 09:10:04 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/10 17:37:33 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,30 @@
 #include <stdlib.h>
 #include "cub3d.h"
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+
+
+void trim(char *str) {
+    int start = 0, end = strlen(str) - 1;
+
+    // Başındaki boşlukları geç
+    while (isspace(str[start])) {
+        start++;
+    }
+
+    // Sondaki boşlukları geç
+    while (end > start && isspace(str[end])) {
+        end--;
+    }
+
+    // Son karakterin ardından NULL karakterini ekle
+    str[end + 1] = '\0';
+
+    // Metni kaydır
+    memmove(str, str + start, end - start + 2);
+}
 
 char	*ft_strjoin_(char const *s1, char const *s2, char **leak)
 {
@@ -44,21 +68,91 @@ char	*ft_strjoin_(char const *s1, char const *s2, char **leak)
 	return (ptr);
 }
 
-char	*read_mapfile(int fd)
+char	*read_type_of_element(int fd)
+{
+	char	**leak;
+	char	*types;
+	int 	read_bytes;
+	
+	leak = NULL;
+	types = malloc(sizeof(char) * 2);
+	read_bytes = read(fd, types, 1);
+	types[1] = '\0';
+	types = read_type_while(leak, read_bytes, types, fd);
+	// split_map(types);
+	return (types);
+}
+
+char	*read_type_while(char **leak, int read_bytes, char *types, int fd)
 {
 	char	c;
-	char	**leak;
-	char	*map_file;
-	int		read_bytes;
+	int		count;
+	int		isspace;
+	int		bytes_sum;
+	int		last_sum;
 
-	map_file = malloc(sizeof(char) * 2);
-	read_bytes = read(fd, map_file, 1);
-	map_file[1] = '\0';
+	count = 0;
+	isspace = 32;
+	bytes_sum = 0;
 	while (read_bytes > 0)
 	{
 		read_bytes = read(fd, &c, 1);
-		leak = &map_file;
-		map_file = ft_strjoin_(map_file, &c, leak);
+		bytes_sum += read_bytes;
+		leak = &types;
+		if (c  > isspace)
+		{
+			if(c == ',')
+				count++;
+			types = ft_strjoin_(types, &c, leak);
+			last_sum = bytes_sum;
+			if(count == 4 && bytes_sum < last_sum + 4)
+				break;
+		}
 	}
-	return (map_file);
+	return (types);
+}
+
+// char	**split_map(char *map_file)
+// {
+	
+// 	int		ncount;
+// 	// char *new_str;
+// 	trim(map_file);
+// 	printf("%s",map_file);
+	
+// 	// printf("%s",new_mapfile[0]);
+// 	ncount = ncounter(map_file);
+// 	return NULL;
+	
+// }
+
+int	ncounter(char *map_file)
+{
+	int i;
+	int exit;
+	int ncount;
+
+	i = 0;
+	exit = 0;
+	ncount = 0;
+	while (map_file[i])
+	{
+		if (map_file[i] == '\n' && map_file[i+2] == '\n')
+		{
+			while (map_file[i] < 33)
+			{
+				if (map_file[i] == '\0')
+				{
+					exit = 1;
+					break;
+				}
+				i++;
+			}
+			if (exit)
+				break;
+			ncount++;
+		}
+		i++;
+	}
+	return (ncount);
 }

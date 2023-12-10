@@ -6,13 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/10 09:22:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/10 14:01:43 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 
-void	inits(t_cub	*cub3d, int fd)
-{
-	cub3d->map = read_mapfile(fd);
-}
+// void	inits(t_cub	*cub3d, int fd)
+// {
+// 	cub3d->map = read_mapfile(fd);
+// }

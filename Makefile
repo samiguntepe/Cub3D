@@ -6,14 +6,14 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2023/12/10 09:07:03 by sguntepe         ###   ########.fr        #
+#    Updated: 2023/12/11 13:07:45 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = cub3D
 CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
-SRCS    = main.c read_mapfile.c inits.c map_control.c
+SRCS    = main.c read_file.c read_file_utils.c file_parcer.c
 OBJS    = $(addprefix obj/, $(SRCS:.c=.o))
 GREEN   = \033[0;32m
 RED     = \033[0;31m

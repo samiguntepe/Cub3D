@@ -6,25 +6,39 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/10 17:21:45 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:07:21 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+#include "./include/libft/libft.h"
+
 typedef struct s_cub
 {
 	char	**map;
 }	t_cub;
 
-char	*read_type_of_element(int fd);
+typedef	struct s_file
+{
+	char	**map;
+	char	**textures;
+	char	**colorRGB;
+	char	**lines;
+	int		fd;
+}	t_file;
+
+
 char	*ft_strjoin_(char const *s1, char const *s2, char **leak);
 void	control_components(char **map);
 void	inits(t_cub	*cub3d, int fd);
 void	map_control(t_cub	*cub3d);
-char	**split_map(char *map_file);
 int		ncounter(char *map_file);
-char	*read_type_while(char **leak, int read_bytes, char *types, int fd);
+
+
+
+char 	*read_file(int fd);
+void	file_parcer(t_file *file);
 
 #endif

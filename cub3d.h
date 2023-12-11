@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/11 13:07:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:58:14 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 #include "./include/libft/libft.h"
 
-typedef struct s_cub
-{
-	char	**map;
-}	t_cub;
 
 typedef	struct s_file
 {
@@ -29,10 +25,14 @@ typedef	struct s_file
 	int		fd;
 }	t_file;
 
+typedef struct s_cub
+{
+	t_file	file;
+	
+}	t_cub;
 
 char	*ft_strjoin_(char const *s1, char const *s2, char **leak);
 void	control_components(char **map);
-void	inits(t_cub	*cub3d, int fd);
 void	map_control(t_cub	*cub3d);
 int		ncounter(char *map_file);
 
@@ -40,5 +40,7 @@ int		ncounter(char *map_file);
 
 char 	*read_file(int fd);
 void	file_parcer(t_file *file);
+char	**file_parcer_textures(char ***lines, char ***textures);
+void	inits(t_cub *cub3d);
 
 #endif

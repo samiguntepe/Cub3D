@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/10 09:21:55 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:54:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	control_components(char **map)
 	}
 }
 
-void	map_control(t_cub	*cub3d)
-{
-	control_components(cub3d->map);
-}
+// void	map_control(t_cub	*cub3d)
+// {
+// 	control_components(cub3d->map);
+// }

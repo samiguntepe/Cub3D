@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:10 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/11 17:38:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:50:39 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,9 @@ char	*ft_strjoin_(char const *s1, char const *s2, char **leak)
 	ptr[i] = '\0';
 	free(*leak);
 	return (ptr);
+}
+
+void	intjoin()
+{
+	
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/12 20:29:38 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/14 09:26:08 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 
 void	file_parcer(t_file *file)
 {
-	char	*all_lines;
+	file->whole_lines = read_file(file);
 
-	all_lines = read_file(file->fd);
 
-	file->lines = ft_split(all_lines, '\n');
+	int a = line_counter(file->whole_lines);
+	// file->lines = split_lines(file->whole_lines);
+	printf("%d", a);
+
+	// printf("%s", file->lines[0]);
+	// printf("%s", file->lines[1]);
+	// printf("%s", file->lines[2]);
+	
+	
 	// file_parcer_textures(file->lines, file->textures);
+	// count_wrgLine(file);
+	// printf("%d", file->wrgLines_count);
 
-	file->wrgLines = point_ignore_line(file);
-	printf("%d\n",file->wrgLines[0]);
-	printf("%d\n",file->wrgLines[1]);
-	printf("%d\n",file->wrgLines[2]);
-	
-	
-	
-	// printf("%s\n", file->lines[0]);
-	// printf("%s\n", file->lines[1]);
-	// printf("%s\n", file->lines[2]);
-	// printf("%s\n", file->lines[3]);
-	// printf("%s\n", file->lines[4]);
 }
 
 char	**file_parcer_textures(char **lines, char **textures)

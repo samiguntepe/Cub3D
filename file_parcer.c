@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/14 13:58:39 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:31:17 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@ void	file_parcer(t_file *file)
 {
 	file->whole_lines = read_file(file);
 	file->lines = split_lines(file->whole_lines);
+	ft_strcpy(file->verify, "NO SO WE EA ");
+	find_textures(file, 0);
+	// find_textures(file, 1);
+	// find_textures(file, 2);
+	// find_textures(file, 3);
 	
-	
-	// file_parcer_textures(file->lines, file->textures);
-	// count_wrgLine(file);
-	// printf("%d", file->wrgLines_count);
+	printf("%s\n", file->NO);
+	// printf("%s\n", file->SO);
+	// printf("%s\n", file->WE);
+	// printf("%s\n", file->EA);
 
 }

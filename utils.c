@@ -28,3 +28,13 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+
+void	ft_strcpy(char *destination, const char *source)
+{
+    while (*source != '\0') {
+        *destination = *source;
+        destination++;
+        source++;
+    }
+    *destination = '\0';
+}

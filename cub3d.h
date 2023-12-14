@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/14 09:25:22 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:50:01 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 typedef	struct s_file
 {
 	char	**map;
-	char	**textures;
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
 	char	**colorRGB;
 	char	**lines;
 	int		*wrgLines;
@@ -45,7 +48,10 @@ char	**file_parcer_textures(char **lines, char **textures);
 void	inits(t_cub *cub3d);
 int		*point_ignore_line(t_file	*fl);
 void	count_wrgLine(t_file *fl);
+
 char 	**split_lines(const char *str);
-int		line_counter(char *str);
+int	line_counter(const char *str);
+void 	free_lines(char **lines, int line_count);
+int 	get_line_length(const char *str, int line_number, char sep);
 
 #endif

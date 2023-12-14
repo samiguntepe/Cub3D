@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/13 11:01:04 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:53:08 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	main(void)
 	t_cub cub3d;
 
 	cub3d.file.fd = open("mapfile.cub", O_RDONLY);
+	if (cub3d.file.fd == -1) {
+    perror("Error opening file");
+    return 1;
+}
 	// inits(&cub3d);
 	file_parcer(&cub3d.file);
 	// inits(&cub3d, fd);

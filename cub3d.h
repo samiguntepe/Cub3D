@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/16 20:12:20 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/16 20:37:47 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int		line_counter(const char *str);
 void 	free_lines(char **lines, int line_count);
 int 	get_line_length(const char *str, int line_number, char sep);
 void	copy_RGB(t_file *fl, int comma_count, char type, int i);
+void	find_RGB(t_file *fl);
 
 #endif

@@ -60,12 +60,16 @@ void	find_RGB(t_file *fl)
 			if(fl->lines[i][0] == 'F')
 			{
 				if (fl->lines[i][j] == ',')
+				{
 					copy_RGB(fl, ++fCount, 'F', i);
+				}
 			}
-			if(fl->lines[i][j] == 'C')
+			if(fl->lines[i][0] == 'C')
 			{
 				if (fl->lines[i][j] == ',')
-					copy_RGB(fl, ++fCount, 'C', i);
+				{
+					copy_RGB(fl, ++cCount, 'C', i);
+				}
 			}
 			j++;
 		}
@@ -77,13 +81,17 @@ void	copy_RGB(t_file *fl, int comma_count, char type, int i)
 {
 	if (type == 'F')
 	{
-		if (comma_count == 3)
-				ft_strcpy(fl->F, fl->lines[i]);
+		if (comma_count == 2)
+		{
+			fl->F = ft_strcpy(fl->F, fl->lines[i]);
+		}
 	}
 	else if (type == 'C')
 	{
-		if (comma_count == 3)
-				ft_strcpy(fl->C, fl->lines[i]);
+		if (comma_count == 2)
+		{
+			fl->C = ft_strcpy(fl->C, fl->lines[i]);
+		}
 	}
 	else
 		printf("Wrong, RGB path!\nError\n");

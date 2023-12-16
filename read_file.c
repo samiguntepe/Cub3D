@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/14 13:58:43 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/16 15:55:27 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char 	*read_file(t_file *file)
+char	*read_file(t_file *fl)
 {
-	char	**leak;
-	char	*types;
-	int		read_bytes;
-	char	c;
+	int		bytes;
+	char	map[2];
+	char	*file;
 
-	leak = NULL;
-	read_bytes = 1;
-	types = malloc(sizeof(char) * 2);
-	types[1] = '\0';
-	while (read_bytes > 0)
+	file = NULL;
+	bytes = 1;
+	while (bytes != 0)
 	{
-		read_bytes = read(file->fd, &c, 1);
-		leak = &types;	
-		types = ft_strjoin_(types, &c, leak);
+		bytes = read(fl->fd, map, 1);
+		map[bytes] = '\0';
+		file = ft_strjoin(file, map);
 	}
-	return (types);
+	return (file);
 }

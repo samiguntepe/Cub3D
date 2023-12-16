@@ -15,12 +15,12 @@ char **split_lines(const char *str)
 	int line_length = 0;
 	int j = 0;
 
-	while (str[start] != '\0') {
+	while (str[start] != '\0')
+	{
 		line_length = get_line_length(str, i, '\n');
 
-		if (line_length == -1) {
+		if (line_length == -1)
 			break;
-		}
 
 		lines[i] = (char *)malloc((line_length + 1) * sizeof(char));
 

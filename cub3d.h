@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/16 20:37:47 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:33:59 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,13 @@ typedef struct s_cub
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
 char	*ft_strcpy(char *destination, const char *source);
-
+char	*ft_strdup(const char *s1);
+int		ft_atoi(const char *str);
+int		ft_checkset(char c, char const *set);
+char 	*strtok_custom(char *str, const char *delim);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strtrim(char const *s1, char const *set);
+char	*set_textures(char *str);
 
 char	*ft_strjoin(char *str, char *add);
 char 	*read_file(t_file *fl);
@@ -60,5 +66,8 @@ void 	free_lines(char **lines, int line_count);
 int 	get_line_length(const char *str, int line_number, char sep);
 void	copy_RGB(t_file *fl, int comma_count, char type, int i);
 void	find_RGB(t_file *fl);
+char	*set_RGB(char *str);
+int		control_RGB_path(char *mainStr, char *subStr);
+int		control_RGB_comma(char *kod);
 
 #endif

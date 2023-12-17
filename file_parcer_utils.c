@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_parcer_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
+/*   Updated: 2023/12/17 16:31:22 by sguntepe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -93,7 +105,16 @@ void	copy_RGB(t_file *fl, int comma_count, char type, int i)
 			fl->C = ft_strcpy(fl->C, fl->lines[i]);
 		}
 	}
-	else
+	else	
 		printf("Wrong, RGB path!\nError\n");
 
+}
+
+char	*set_textures(char *str)
+{
+	char *new;
+	if (str == NULL)
+		exit(printf("Wrong, texturex path!\nError\n"));
+	new = ft_strtrim(str, "NSOWEA ");
+	return (new);
 }

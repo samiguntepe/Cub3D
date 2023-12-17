@@ -8,7 +8,7 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "/Users/sguntepe/Desktop/Cub3D/cub3D",
+			"program": "/Users/sguntepe/Desktop/Cub3D/cub3d",
 			"args": [],
 			"cwd": "${workspaceFolder}"
 		}

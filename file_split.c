@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:43 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/17 10:47:44 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:27:18 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,9 @@ char **split_lines(const char *str)
 		start += line_length + 1;
 		i++;
 	}
-
 	lines[i] = NULL;
-
 	return lines;
 }
-
 
 int	line_counter(const char *str)
 {
@@ -74,7 +71,6 @@ int	line_counter(const char *str)
 		line_count++;
 	return (line_count);
 }
-
 
 int get_line_length(const char *str, int line_number, char sep)
 {
@@ -96,6 +92,5 @@ int get_line_length(const char *str, int line_number, char sep)
         }
         return line_length;
     }
-
     return -1;
 }

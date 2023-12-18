@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/17 16:01:36 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:54:49 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,16 @@
 #include "cub3d.h"
 #include <stdlib.h>
 
-void	control_components(char **map)
+int	control_components(char **map, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j] != '\0' && map[i][j] != '\n')
-		{
-			if (map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'N' ||
-				map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W');
-			else
-				perror("Error\n");
-			j++;
-		}
-		i++;
-	}
+	if ((map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'N' ||
+		map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W') &&
+		(map[i][j] == ' ' || map[i][j] == '0' || map[i][j] == '1' ||
+		map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' ||
+		map[i][j] == 'W'))
+		return 1;
+	else
+		return 0;
 }
 
 int control_RGB_path(char *mainStr, char *subStr) {
@@ -47,7 +38,6 @@ int control_RGB_path(char *mainStr, char *subStr) {
             while (j < sub_length && mainStr[i + j] == subStr[j]) {
                 j++;
             }
-
             if (j == sub_length) {
                 while (mainStr[i + j] != '\0') {
                     if (mainStr[i + j] > 32) {
@@ -63,44 +53,34 @@ int control_RGB_path(char *mainStr, char *subStr) {
     return 0;
 }
 
-
 int	control_RGB_comma(char *kod)
 {
-    int virgul_sayisi = 0;
-
-    for (int i = 0; kod[i] != '\0'; i++) {
-        if (kod[i] == ',') {
-            virgul_sayisi++;
-        } else if (!(kod[i] >= '0' && kod[i] <= '9')) {
-            return 0; // Rakam veya virgül dışında bir karakter var, hata
-        }
-    }
-
-    if (virgul_sayisi != 2) {
-        return 0; // Virgül sayısı 2 değil, hata
-    }
-
-    char *token;
-    char *kopya = ft_strdup(kod); // Veriyi bozmamak için kopyalama
-    if (kopya == NULL) {
-        return 0; // Bellek hatası
-    }
-
-    token = strtok_custom(kopya, ",");
-	if (token == NULL)
-		exit(printf("Wrong RGB Error\n"));
-    while (token != NULL) {
-        int deger = ft_atoi(token);
-		printf("%d\n", deger);
-        if ((deger < 0 || deger > 255)) {
-            free(kopya);
-            return 0; // RGB aralığında olmayan bir değer, hata
-        }
-        token = strtok_custom(NULL, ",");
-    }
-
-    free(kopya);
-    return 1; // Her şey uygun
+	int	i;
+	int	num;
+    char **ptr;
+	
+	i = 0;
+	num = 0;
+	while (kod[i])
+	{
+		if (kod[i] == ',')
+			num++;
+		i++;
+	}
+	if (num != 2)
+		return 1;
+	ptr = ft_split(kod, ',');
+	i = 0;
+	while (ptr[i])
+	{
+		num = ft_atoi(ptr[i]);
+		if (num  > 255 || num < 0)
+			return 1;
+		i++;
+	}
+	if(i != 3)
+		return 1;
+	return 0;
 }
 
 

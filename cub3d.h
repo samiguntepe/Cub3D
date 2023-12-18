@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/17 16:33:59 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:02:25 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct s_file
 	char	*F;
 	char	*C;
 	char	verify[12];
-	
+	int		*verify_map;
 	char	**lines;
 	char	*whole_lines;
 	int		fd;
@@ -69,5 +69,21 @@ void	find_RGB(t_file *fl);
 char	*set_RGB(char *str);
 int		control_RGB_path(char *mainStr, char *subStr);
 int		control_RGB_comma(char *kod);
+char	**ft_split(char const *s, char c);
+int		wordcounter(const char *s, char delimiter);
+void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	find_map(t_file *fl);
+char*	ft_strstr(const char* str, const char* substr);
+int		control_components(char **map, int i, int j);
+
+
+char 	**filterLines(char **lines, int numLines);
+int 	countValidLines(char **lines, int numLines);
+int 	isValidLine(char *line);
+
+
+
 
 #endif

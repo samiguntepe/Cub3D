@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/18 12:54:49 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:10:22 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,39 @@
 #include "cub3d.h"
 #include <stdlib.h>
 
-int	control_components(char **map, int i, int j)
+int	control_components(char *map_line)
 {
-	if ((map[i][j] == '0' || map[i][j] == '1' || map[i][j] == 'N' ||
-		map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W') &&
-		(map[i][j] == ' ' || map[i][j] == '0' || map[i][j] == '1' ||
-		map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' ||
-		map[i][j] == 'W'))
-		return 1;
-	else
+	int i;
+	int	count;
+	int	len;
+	int	isspace;
+
+	i = 0;
+	len = 0;
+	count = 0;
+	isspace = 0;
+	while (map_line[i])
+	{
+		if (map_line[i] == '0' || map_line[i] == '1' || map_line[i] == 'N' ||
+		map_line[i] == 'S' || map_line[i] == 'E' || map_line[i] == 'W' || map_line[i] == ' ')
+		{
+			if (map_line[i] <= 32)
+				isspace++;
+			count++;
+		}
+		i++;
+	}
+	len = ft_strlen(map_line);
+	// printf("len:%d\n", len);
+	// printf("isppace:%d\n\n", isspace);
+	if (isspace == len)
+	{
+		// printf("%d\n", i);
 		return 0;
+	}
+	if (count == len)
+		return 1;
+	return 0;
 }
 
 int control_RGB_path(char *mainStr, char *subStr) {

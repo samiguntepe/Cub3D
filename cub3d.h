@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/18 14:02:25 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/19 15:39:02 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	find_map(t_file *fl);
 char*	ft_strstr(const char* str, const char* substr);
-int		control_components(char **map, int i, int j);
+int		control_components(char *map_line);
+void	map_size(t_file *fl);
 
 
 char 	**filterLines(char **lines, int numLines);

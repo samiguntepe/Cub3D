@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/19 15:39:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:25:54 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ typedef	struct s_file
 	char	*F;
 	char	*C;
 	char	verify[12];
-	int		*verify_map;
 	char	**lines;
 	char	*whole_lines;
+	char	*control_index[3];
+	int		map_h;
+	int		map_w;
 	int		fd;
 }	t_file;
 
@@ -53,7 +55,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*set_textures(char *str);
 
-char	*ft_strjoin(char *str, char *add);
+char	*ft_strjoin(const char *s1, const char *s2);
 char 	*read_file(t_file *fl);
 void	file_parcer(t_file *file);
 void	inits(t_cub *cub3d);
@@ -78,13 +80,8 @@ void	find_map(t_file *fl);
 char*	ft_strstr(const char* str, const char* substr);
 int		control_components(char *map_line);
 void	map_size(t_file *fl);
-
-
-char 	**filterLines(char **lines, int numLines);
-int 	countValidLines(char **lines, int numLines);
-int 	isValidLine(char *line);
-
-
-
+void	control_lines(t_file *fl);
+void	upload_control_index(t_file *fl);
+char	*ft_freejoin(const char *s1, const char *s2);
 
 #endif

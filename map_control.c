@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/19 17:10:22 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:43:45 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,8 @@ int	control_components(char *map_line)
 		i++;
 	}
 	len = ft_strlen(map_line);
-	// printf("len:%d\n", len);
-	// printf("isppace:%d\n\n", isspace);
 	if (isspace == len)
-	{
-		// printf("%d\n", i);
 		return 0;
-	}
 	if (count == len)
 		return 1;
 	return 0;
@@ -110,4 +105,32 @@ int	control_RGB_comma(char *kod)
 void	map_control(t_cub	*cub3d)
 {
 	(void)cub3d;
+}
+
+void	control_lines(t_file *fl)
+{
+		if (ft_strstr(fl->whole_lines, fl->control_index[0]))
+			exit(printf("bulunamadi"));
+		else if (ft_strstr(fl->whole_lines, fl->control_index[1]))
+			exit(printf("map bulunamadi"));
+}
+
+
+void	upload_control_index(t_file *fl)
+{
+	int	i;
+	
+	i = 0;
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->C);
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->F);
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->WE);
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->NO);
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->EA);
+	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->SO);
+	while (fl->map[i])
+	{
+		fl->control_index[1] = ft_strjoin(fl->control_index[1], fl->map[i]);
+		i++;
+	}
+	fl->control_index[2] = NULL;	
 }

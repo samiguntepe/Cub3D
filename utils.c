@@ -6,35 +6,71 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:31 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/18 11:19:00 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:55:36 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char *str, char *add)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
-	char	*new;
+    size_t len_s1 = 0;
+    size_t len_s2 = 0;
 
-	if (!str)
-	{
-		str = (char *)malloc(sizeof(char) * 1);
-		str[0] = '\0';
-	}
-	new = malloc(sizeof(char) * ((ft_strlen(str) + ft_strlen(add)) + 1));
-	i = -1;
-	j = 0;
-	if (str)
-		while (str[++i])
-			new[i] = str[i];
-	while (add[j])
-		new[i++] = add[j++];
-	new[ft_strlen(str) + ft_strlen(add)] = '\0';
-	free(str);
-	return (new);
+    if (s1 != NULL)
+        len_s1 = ft_strlen(s1);
+    if (s2 != NULL)
+        len_s2 = ft_strlen(s2);
+
+    size_t total_len = len_s1 + len_s2;
+    char *result;
+
+    if (s1 == NULL && s2 == NULL)
+        return NULL;
+
+    result = (char *)malloc(sizeof(char) * (total_len + 1));
+    if (result == NULL)
+        return NULL;
+
+    if (len_s1 > 0)
+        ft_strcpy(result, s1);
+    if (len_s2 > 0)
+        ft_strcpy(result + len_s1, s2);
+
+    result[total_len] = '\0';
+    return result;
+}
+
+char	*ft_freejoin(const char *s1, const char *s2)
+{
+    size_t len_s1 = 0;
+    size_t len_s2 = 0;
+
+    if (s2 != NULL)
+        len_s2 = ft_strlen(s2);
+    if (s1 != NULL)
+        len_s1 = ft_strlen(s1);
+	else
+		s1 = malloc(sizeof(char) * len_s2 + 1);
+
+    size_t total_len = len_s1 + len_s2;
+    char *result;
+
+    if (s1 == NULL && s2 == NULL)
+        return NULL;
+
+    result = (char *)malloc(sizeof(char) * (total_len + 1));
+    if (result == NULL)
+        return NULL;
+
+    if (len_s1 > 0)
+        ft_strcpy(result, s1);
+    if (len_s2 > 0)
+        ft_strcpy(result + len_s1, s2);
+
+    result[total_len] = '\0';
+    return result;
 }
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
@@ -49,7 +85,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 			dest[i] = src[i];
 			i++;
 		}
-		dest[i] = '\0';
 	}
 	return (ft_strlen (src));
 }
@@ -57,7 +92,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-
+	
 	i = 0;
 	while (s[i])
 	{

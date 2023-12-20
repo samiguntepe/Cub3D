@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/19 15:29:33 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 10:58:00 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,31 +109,3 @@ char	*set_textures(char *str)
 	new = ft_strtrim(str, "NSOWEA ");
 	return (new);
 }
-
-// Yardımcı fonksiyon: Bir satırın belirtilen karakterleri içerip içermediğini kontrol eder
-// int countValidLines(char **lines, int numLines) {
-//     int count = 0;
-//     for (int i = 0; i < numLines; i++) {
-//         if (isValidLine(lines[i])) {
-//             count++;
-//         }
-//     }
-//     return count;
-// }
-
-// // Ana fonksiyon: Çift boyutlu diziyi filtreler
-// char **filterLines(char **lines, int numLines) {
-//     int validLineCount = countValidLines(lines, numLines);
-//     char **filteredLines = malloc(validLineCount * sizeof(char *));
-//     int filteredLineIndex = 0;
-
-//     for (int i = 0; i < numLines; i++) {
-//         if (control_components(lines[i])) {
-//             filteredLines[filteredLineIndex] = malloc((ft_strlen(lines[i]) + 1) * sizeof(char));
-//             ft_strcpy(filteredLines[filteredLineIndex], lines[i]);
-//             filteredLineIndex++;
-//         }
-//     }
-
-//     return filteredLines;
-// }

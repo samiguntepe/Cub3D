@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:43 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/18 09:27:18 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:42:19 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char **split_lines(const char *str)
 	while (str[start] != '\0')
 	{
 		line_length = get_line_length(str, i, '\n');
-
 		if (line_length == -1)
 			break;
 

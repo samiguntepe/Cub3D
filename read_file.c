@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/17 13:27:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:40:54 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define BUFFER_SIZE 1024
+
 char	*read_file(t_file *fl)
 {
-	int		bytes;
-	char	map[2];
-	char	*file;
+    int		bytes;
+    char	buffer[BUFFER_SIZE + 1];
+    char	*file;
+    char	*temp_str;
 
-	file = NULL;
+    file = NULL;
 	bytes = 1;
-	while (bytes != 0)
-	{
-		bytes = read(fl->fd, map, 1);
-		map[bytes] = '\0';
-		file = ft_strjoin(file, map);
-	}
-	return (file);
+    while (bytes > 0)
+    {
+		bytes = read(fl->fd, buffer, BUFFER_SIZE);
+        buffer[bytes] = '\0';
+        temp_str = ft_strjoin(file, buffer);
+        free(file);
+        file = temp_str;
+    }
+    if (bytes < 0)
+		exit(printf("Error\n"));
+    return (file);
 }

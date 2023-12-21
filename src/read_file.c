@@ -6,11 +6,11 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/20 17:40:54 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:05:35 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 #include <stdlib.h>
 #include <unistd.h>
 

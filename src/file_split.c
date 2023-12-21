@@ -6,26 +6,26 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:43 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 09:19:56 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:04:41 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 #include <stdlib.h>
 
 char **split_lines(const char *str)
 {
 	int line_count;
+	int i = 0;
+	int start = 0;
+	int line_length = 0;
+	int j = 0;
 	
 	line_count = line_counter(str);
 	char **lines = (char **)malloc((line_count + 1) * sizeof(char *));
 	if (!lines)
 		return NULL;
 
-	int i = 0;
-	int start = 0;
-	int line_length = 0;
-	int j = 0;
 
 	while (str[start] != '\0')
 	{

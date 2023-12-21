@@ -6,13 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 13:55:55 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:03:44 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 
 void	file_parcer(t_file *file)

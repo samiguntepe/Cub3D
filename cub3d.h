@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 14:06:49 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:46:28 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+//MAP
 #define NO_Texture 0
 #define SO_Texture 1
 #define WE_Texture 2
 #define EA_Texture 3
 
+//
+# define SW 640
+# define SH 480
+
+//MAP
 typedef	struct s_file
 {
 	char	**map;
@@ -43,12 +49,81 @@ typedef	struct s_file
 	int		fd;
 }	t_file;
 
-typedef struct s_cub
+//GAME
+typedef struct s_image
 {
-	t_file	file;
-	
-}	t_cub;
+	void *i;
+	int  *addr;
+	int  nbr;
+} t_image;
 
+typedef struct s_texture
+{
+	double      step;
+	double      texPos;
+	int         lineH;
+	int         floor;
+    int         ceiling;
+    int         drawStart;
+    int         drawEnd;
+    int    		texX;
+    int   		texY;
+	int         texWidth;
+	int         texHeight;
+	t_image     *NO;
+	t_image     *SO;
+	t_image     *WE;
+	t_image     *EA;
+}	t_texture;
+
+typedef struct s_raycast
+{
+    double      posX;
+    double      posY;
+    double      dirX;
+    double      dirY;
+	double		rayDirX;
+	double		rayDirY;
+	double      cameraX;
+	double      planeX;
+    double      planeY;
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX;
+	double		deltaDistY;
+	double		perpwalldist;
+	double      wallX;
+	int			mapX;
+	int			mapY;
+	int			stepX;
+	int			stepY;
+	int			hit;
+	int			side;
+}   t_raycast;
+
+typedef struct s_game
+{
+	void        *mlx;
+	void        *mlxWin;
+ 	bool   w;
+    bool   s;
+    bool   a;
+    bool   d;
+    bool   left;
+    bool   right;
+	float  speed;
+    float  rspeed;
+	t_image     *img;
+	t_texture   t;
+	t_raycast   r;
+} t_game;
+
+//GAME
+int movePress(int keyCode, t_game *g);
+int moveRelease(int keyCode, t_game *g);
+int game(t_game *g);
+
+//MAP
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
 void	ft_strcpy(char **destination, const char *source);
@@ -59,13 +134,11 @@ char 	*strtok_custom(char *str, const char *delim);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*set_textures(char *str);
-
 char	*ft_strjoin(const char *s1, const char *s2);
 char 	*read_file(t_file *fl);
 void	file_parcer(t_file *file);
 void	inits(t_cub *cub3d);
 void	find_textures(t_file *fl, int textures);
-
 void	copy_textures(t_file *fl, int textures, int i);
 char 	**split_lines(const char *str);
 int		line_counter(const char *str);
@@ -88,7 +161,10 @@ void	map_size(t_file *fl);
 void	control_lines(t_file *fl);
 void	upload_control_index(t_file *fl);
 char	*ft_freejoin(const char *s1, const char *s2);
-
 void 	str_cpy(char *destination, const char *source);
+
+
+
+
 
 #endif

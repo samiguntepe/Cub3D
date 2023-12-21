@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 13:12:09 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:06:49 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define CUB3D_H
 
 #include <stdio.h>
+#include "minilibx/mlx.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 #define NO_Texture 0
 #define SO_Texture 1

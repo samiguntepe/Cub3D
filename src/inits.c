@@ -6,12 +6,11 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 09:59:16 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:16:33 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdlib.h>
+#include "../cub3d.h"
 
 void	inits(t_cub *cub3d)
 {
@@ -28,4 +27,14 @@ void	inits(t_cub *cub3d)
 	cub3d->file.control_index[1] = NULL;
 	ptr = cub3d->file.verify;
 	ft_strcpy(&ptr, "NO SO WE EA ");
+}
+
+void	game_inits()
+{
+	g.w = false;
+    g.a = false;
+    g.s = false;
+    g.d = false;
+    g.left = false;
+    g.right = false;
 }

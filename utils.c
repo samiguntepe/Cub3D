@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:31 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/20 19:55:36 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:41:27 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ char	*ft_strjoin(const char *s1, const char *s2)
         return NULL;
 
     if (len_s1 > 0)
-        ft_strcpy(result, s1);
+        str_cpy(result, s1);
     if (len_s2 > 0)
-        ft_strcpy(result + len_s1, s2);
+        str_cpy(result + len_s1, s2);
 
     result[total_len] = '\0';
     return result;
@@ -65,9 +65,9 @@ char	*ft_freejoin(const char *s1, const char *s2)
         return NULL;
 
     if (len_s1 > 0)
-        ft_strcpy(result, s1);
+        ft_strcpy(&result, s1);
     if (len_s2 > 0)
-        ft_strcpy(result + len_s1, s2);
+        ft_strcpy(&result + len_s1, s2);
 
     result[total_len] = '\0';
     return result;
@@ -101,20 +101,32 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strcpy(char *destination, const char *source)
+void	ft_strcpy(char **destination, const char *source)
 {
-	int	i = 0;
-	if (destination == NULL)
-	{
-		destination = malloc(sizeof(char) * ft_strlen(source) + 1);
-	}
-    while (source[i] != '\0')
-	{
-        destination[i] = source[i];
-		i++;
+    int	i = 0;
+    if (*destination == NULL)
+    {
+        *destination = malloc(sizeof(char) * ft_strlen(source) + 1);
+        if (*destination == NULL) {
+            printf("Bellek tahsisi basarisiz.\n");
+            return;
+        }
     }
-    destination[i] = '\0';
-	return (destination);
+    while (source[i] != '\0')
+    {
+        (*destination)[i] = source[i];
+        i++;
+    }
+    (*destination)[i] = '\0';
+}
+
+void str_cpy(char *destination, const char *source) {
+    while (*source != '\0') {
+        *destination = *source;
+        source++;
+        destination++;
+    }
+    *destination = '\0';
 }
 
 char	*ft_strdup(const char *s1)

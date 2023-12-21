@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/20 19:25:54 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:12:09 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_cub
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
-char	*ft_strcpy(char *destination, const char *source);
+void	ft_strcpy(char **destination, const char *source);
 char	*ft_strdup(const char *s1);
 int		ft_atoi(const char *str);
 int		ft_checkset(char c, char const *set);
@@ -66,11 +66,11 @@ char 	**split_lines(const char *str);
 int		line_counter(const char *str);
 void 	free_lines(char **lines, int line_count);
 int 	get_line_length(const char *str, int line_number, char sep);
-void	copy_RGB(t_file *fl, int comma_count, char type, int i);
-void	find_RGB(t_file *fl);
-char	*set_RGB(char *str);
-int		control_RGB_path(char *mainStr, char *subStr);
-int		control_RGB_comma(char *kod);
+void	copy_rgb(t_file *fl, int comma_count, char type, int i);
+void	find_rgb(t_file *fl);
+char	*set_rgb(char *str);
+int		control_rgb_path(char *mainStr, char *subStr);
+int		control_rgb_comma(char *kod);
 char	**ft_split(char const *s, char c);
 int		wordcounter(const char *s, char delimiter);
 void	*ft_memset(void *b, int c, size_t len);
@@ -83,5 +83,7 @@ void	map_size(t_file *fl);
 void	control_lines(t_file *fl);
 void	upload_control_index(t_file *fl);
 char	*ft_freejoin(const char *s1, const char *s2);
+
+void 	str_cpy(char *destination, const char *source);
 
 #endif

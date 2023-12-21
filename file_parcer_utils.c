@@ -6,13 +6,14 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/20 10:58:00 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:12:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 void	find_textures(t_file *fl, int textures)
 {
@@ -43,18 +44,18 @@ void	find_textures(t_file *fl, int textures)
 void	copy_textures(t_file *fl, int textures, int i)
 {
 	if (textures == NO_Texture)
-		fl->NO = ft_strcpy(fl->NO, fl->lines[i]);
+		ft_strcpy(&(fl->NO), fl->lines[i]);
 	else if (textures == SO_Texture)
-		fl->SO = ft_strcpy(fl->SO, fl->lines[i]);
+		ft_strcpy(&(fl->SO), fl->lines[i]);
 	else if (textures == WE_Texture)
-		fl->WE = ft_strcpy(fl->WE, fl->lines[i]);
+		ft_strcpy(&(fl->WE), fl->lines[i]);
 	else if (textures == EA_Texture)
-		fl->EA = ft_strcpy(fl->EA, fl->lines[i]);
+		ft_strcpy(&(fl->EA), fl->lines[i]);
 	else
 		exit(printf("Wrong, texturex path!\nError\n"));
 }
 
-void	find_RGB(t_file *fl)
+void	find_rgb(t_file *fl)
 {
 	int	i;
 	int	j;
@@ -72,12 +73,12 @@ void	find_RGB(t_file *fl)
 			if(fl->lines[i][0] == 'F' && fl->lines[i][1] == ' ')
 			{
 				if (fl->lines[i][j] == ',')
-					copy_RGB(fl, ++fCount, 'F', i);
+					copy_rgb(fl, ++fCount, 'F', i);
 			}
 			if(fl->lines[i][0] == 'C' && fl->lines[i][1] == ' ')
 			{
 				if (fl->lines[i][j] == ',')
-					copy_RGB(fl, ++cCount, 'C', i);
+					copy_rgb(fl, ++cCount, 'C', i);
 			}
 			j++;
 		}
@@ -85,17 +86,17 @@ void	find_RGB(t_file *fl)
 	}
 }
 
-void	copy_RGB(t_file *fl, int comma_count, char type, int i)
+void	copy_rgb(t_file *fl, int comma_count, char type, int i)
 {
 	if (type == 'F')
 	{
 		if (comma_count == 2)
-			fl->F = ft_strcpy(fl->F, fl->lines[i]);
+			ft_strcpy(&(fl->F), fl->lines[i]);
 	}
 	else if (type == 'C')
 	{
 		if (comma_count == 2)
-			fl->C = ft_strcpy(fl->C, fl->lines[i]);
+			ft_strcpy(&(fl->C), fl->lines[i]);
 	}
 	else	
 		exit(printf("Wrong, texturex path!\nError\n"));

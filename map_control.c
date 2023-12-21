@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/20 19:43:45 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:41:50 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	control_components(char *map_line)
 	return 0;
 }
 
-int control_RGB_path(char *mainStr, char *subStr) {
+int control_rgb_path(char *mainStr, char *subStr) {
     int i = 0;
     int main_length = ft_strlen(mainStr);
     int sub_length = ft_strlen(subStr);
@@ -71,7 +71,7 @@ int control_RGB_path(char *mainStr, char *subStr) {
     return 0;
 }
 
-int	control_RGB_comma(char *kod)
+int	control_rgb_comma(char *kod)
 {
 	int	i;
 	int	num;
@@ -122,15 +122,15 @@ void	upload_control_index(t_file *fl)
 	
 	i = 0;
 	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->C);
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->F);
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->WE);
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->NO);
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->EA);
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->SO);
+	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->F);
+	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->WE);
+	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->NO);
+	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->EA);
+	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->SO);
 	while (fl->map[i])
 	{
 		fl->control_index[1] = ft_strjoin(fl->control_index[1], fl->map[i]);
 		i++;
 	}
-	fl->control_index[2] = NULL;	
+	fl->control_index[2] = NULL;
 }

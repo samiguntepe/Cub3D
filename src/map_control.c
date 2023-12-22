@@ -6,12 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 13:41:50 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 08:33:16 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "cub3d.h"
+#include "../cub3d.h"
 #include <stdlib.h>
 
 int	control_components(char *map_line)
@@ -101,20 +101,10 @@ int	control_rgb_comma(char *kod)
 	return 0;
 }
 
-
-void	map_control(t_cub	*cub3d)
+void	map_control(t_file *fl)
 {
-	(void)cub3d;
+	(void)fl;
 }
-
-void	control_lines(t_file *fl)
-{
-		if (ft_strstr(fl->whole_lines, fl->control_index[0]))
-			exit(printf("bulunamadi"));
-		else if (ft_strstr(fl->whole_lines, fl->control_index[1]))
-			exit(printf("map bulunamadi"));
-}
-
 
 void	upload_control_index(t_file *fl)
 {

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 17:03:44 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 08:34:18 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void	file_parcer(t_file *file)
 {
 	file->whole_lines = read_file(file);
+
 	file->lines = split_lines(file->whole_lines);
 	find_textures(file, 0);
 	find_rgb(file);
@@ -29,7 +30,6 @@ void	file_parcer(t_file *file)
 	map_size(file);
 	find_map(file);
 	upload_control_index(file);
-	control_lines(file);
 }
 
 char	*set_rgb(char *str)

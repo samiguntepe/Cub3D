@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:43 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 17:04:41 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:01:36 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char **split_lines(const char *str)
 {
 	int line_count;
 	int i = 0;
-	int start = 0;
+	size_t start = 0;
 	int line_length = 0;
 	int j = 0;
 	
@@ -27,7 +27,7 @@ char **split_lines(const char *str)
 		return NULL;
 
 
-	while (str[start] != '\0')
+	while ((str[start] != '\0') && (start < ft_strlen(str)))
 	{
 		line_length = get_line_length(str, i, '\n');
 		if (line_length == -1)

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:17:34 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 17:22:59 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 09:07:59 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strstr(const char *str, const char *substr)
 	const char	*temp_str;
 	const char	*temp_substr;
 
+	temp_substr = NULL;
+	temp_str = NULL;
 	if (*substr == '\0')
 		return ((char *)str);
 	while (*str != '\0')
@@ -51,4 +53,30 @@ void	*ft_memset(void *b, int c, size_t len)
 		i++;
 	}
 	return (b);
+}
+
+void	map_name_control(char *map_name)
+{
+	int	len;
+
+	len = ft_strlen(map_name);
+	if (map_name[--len] == 'b')
+	{
+		if (map_name[--len] == 'u')
+		{
+			if (map_name[--len] == 'c')
+			{
+				if (map_name[--len] == '.')
+					;
+				else
+					exit(printf("Wrong, map name!"));
+			}
+			else
+				exit(printf("Wrong, map name!"));
+		}
+		else
+			exit(printf("Wrong, map name!"));
+	}
+	else
+		exit(printf("Wrong, map name!"));
 }

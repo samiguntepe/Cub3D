@@ -6,7 +6,7 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2023/12/22 08:48:02 by sguntepe         ###   ########.fr        #
+#    Updated: 2023/12/22 20:44:56 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ SRCS    	= ./src/main.c ./src/read_file.c ./src/file_parcer.c \
 			 ./src/file_parcer_utils.c ./src/utils.c ./src/file_split.c \
 			 ./src/map_control.c ./src/utils_next_one.c ./src/utils_next.c \
 			 ./src/key.c ./src/location.c ./src/file_split_utils.c \
-			 ./src/keyInit.c 
+			 ./src/keyInit.c ./src/player_find.c ./src/path_finder.c
 OBJS    	= $(addprefix obj/, $(SRCS:.c=.o))
-# OFLAGS		= -framework OpenGL -framework AppKit
-# MINILIBX	= ./minilibx/libmlx.a
+OFLAGS		= -framework OpenGL -framework AppKit
+MINILIBX	= ./minilibx/libmlx.a
 GREEN   	= \033[0;32m
 RED     	= \033[0;31m
 PURPLE		= \033[0;35m
@@ -34,26 +34,27 @@ obj:
 	@mkdir -p obj/./src/
 
 
-$(NAME):  $(OBJS) #$(MINILIBX)
+$(NAME):  $(OBJS) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OFLAGS) $(OBJS) $(MINILIBX) -o $@
 	@echo "$(GREEN)[✓]$(CODE)"
 
 obj/%.o: %.c
 	@$(CC) $(CFLAGS)  -c $< -o $@
 
-# $(MINILIBX):
-# 	@make -s -C ./minilibx &
-# 	@for i in {1..4}; do \
-# 	printf "\r$(PURPLE)[%-4s]$(CODE)" "$$(head -c $$i < /dev/zero | tr '\0' '#')"; \
-#         sleep 1; \
-#     done
-# 	@echo ""
-# 	@wait
+$(MINILIBX):
+	@make -s -C ./minilibx &
+	@for i in {1..4}; do \
+	printf "\r$(PURPLE)[%-4s]$(CODE)" "$$(head -c $$i < /dev/zero | tr '\0' '#')"; \
+        sleep 1; \
+    done
+	@echo ""
+	@wait
 
 clean:
 	@rm -rf $(OBJS)
 	@rm -f ./minilibx/*.o
 	@rm -rf obj
+	@rm -rf cub3D.dSYM
 
 fclean: clean
 	@rm -f $(NAME)

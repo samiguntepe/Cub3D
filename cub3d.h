@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 09:08:10 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:57:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@
 typedef	struct s_file
 {
 	char	**map;
-	char	*map_name;
+	int		**mapInt;
 	char	*NO;
 	char	*SO;
 	char	*WE;
 	char	*EA;
 	char	*F;
 	char	*C;
-	char	verify[12];
+	char	verify[20];
 	char	**lines;
 	char	*whole_lines;
 	char	*control_index[3];
@@ -53,9 +53,8 @@ typedef	struct s_file
 //GAME
 typedef struct s_image
 {
-	void *i;
+	void *img;
 	int  *addr;
-	int  nbr;
 } t_image;
 
 typedef struct s_texture
@@ -71,10 +70,10 @@ typedef struct s_texture
     int   		texY;
 	int         texWidth;
 	int         texHeight;
-	t_image     *NO;
-	t_image     *SO;
-	t_image     *WE;
-	t_image     *EA;
+	t_image     *imgNO;
+	t_image     *imgSO;
+	t_image     *imgWE;
+	t_image     *imgEA;
 }	t_texture;
 
 typedef struct s_raycast
@@ -115,14 +114,38 @@ typedef struct s_game
 	float  speed;
     float  rspeed;
 	t_image     *img;
-	t_texture   t;
-	t_raycast   r;
+	t_texture   text;
+	t_raycast   rayc;
+	t_file		*file;
 } t_game;
 
 // //GAME
-// int movePress(int keyCode, t_game *g);
-// int moveRelease(int keyCode, t_game *g);
-// int game(t_game *g);
+int		movePress(int keyCode, t_game *g);
+int		moveRelease(int keyCode, t_game *g);
+int		game_loop(t_game *g);
+void 	raycast(t_game *g, t_file *fl);
+void 	calculate(t_game *g);
+void 	init2(t_game *g);
+void 	init(t_game *g, int x);
+void 	dda(t_game *g, t_file *fl);
+void 	dda2(t_game *g);
+void 	draw(t_game *g);
+void 	draw2(t_game *g);
+void 	draw3(t_game *g, int x);
+void 	movement(t_game *g, t_file *fl);
+void 	rotate(t_game *g);
+void	game_inits(t_game *g);
+void	texture_init(t_game *g);
+void	texture_init_next(t_game *g);
+// void testMap(t_file *fl);
+// int floodFill(t_file *fl, int i, int j, int size);
+void	find_player(t_file *fl, t_game *g);
+void 	playerPosNS(t_file *fl, t_game *g, int i, int j);
+void 	playerPosWE(t_file *fl, t_game *g, int i, int j);
+void	game_inits(t_game *g);
+void	inits_rgb(t_game *g);
+int 	create_trgb(int t, int r, int g, int b);
+int		press_close_key();
 
 //MAP
 size_t	ft_strlen(const char *s);

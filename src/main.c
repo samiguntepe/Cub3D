@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 09:18:38 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:08:35 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 int	main(int argc, char **argv)
 {
+	t_game game;
     t_file file;
+	int n;
 
 	inits(&file);
     if (argc != 2)
@@ -30,19 +32,20 @@ int	main(int argc, char **argv)
     }
     map_name_control(argv[1]);
     file_parcer(&file);
-    
-    // t_game g;
-
-    // keyinit(&g);
-    // g.mlx = mlx_init();
-    // g.mlxWin = mlx_new_window(g.mlx, SW, SH, "cub3D");
-    // g.img = malloc(sizeof(t_image)); 
-    // g.img->i = mlx_new_image(g.mlx, SW, SH);
-    // g.img->addr = (int *)mlx_get_data_addr(g.img->i, &g.img->nbr, &g.img->nbr, &g.img->nbr);
-    
-    // mlx_hook(g.mlxWin, 2, 1L<<0, movePress, &g);
-    // mlx_hook(g.mlxWin, 3, 1L<<1, moveRelease, &g);
-    // mlx_hook_loop(g.mlx, &game, &g);
-    // mlx_loop(g.mlx);
+	// testMap(&file);
+    game.file = &file;
+	find_player(&file, &game);
+	game_inits(&game);
+	inits_rgb(&game);
+    game.mlxWin = mlx_new_window(game.mlx, SW, SH, "cub3D");
+    game.img = malloc(sizeof(t_image));
+    game.img->img = mlx_new_image(game.mlx, SW, SH);
+    game.img->addr = (int *)mlx_get_data_addr(game.img->img, &n, &n, &n);
+    texture_init(&game);
+	texture_init_next(&game);
+    mlx_hook(game.mlxWin, 2, 1L<<0, movePress, &game);
+    mlx_hook(game.mlxWin, 3, 1L<<1, moveRelease, &game);
+    mlx_loop_hook(game.mlx, &game_loop, &game);
+    mlx_loop(game.mlx);
     return (0);
 }

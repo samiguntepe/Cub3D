@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 08:01:06 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/22 20:58:34 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	find_textures(t_file *fl, int textures)
 	{
 			if (fl->lines[i][0] == fl->verify[m]
 			&& fl->lines[i][1] == fl->verify[m +1]
-			&& fl->lines[i][2] == fl->verify[m +2])
+			&& fl->lines[i][2] == fl->verify[m +2]
+			&& fl->lines[i][3] == fl->verify[m +3])
 			{
 				copy_textures(fl, textures, i);
 				textures++;

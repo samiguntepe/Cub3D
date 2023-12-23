@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 13:21:05 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:33:04 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,10 @@ void draw(t_game *g)
 void draw2(t_game *g)
 {
     g->text.texX = (int)(g->rayc.wallX * (double)g->text.texWidth);
-    if (g->rayc.side == 0 && g->rayc.rayDirX > 0)
+    if (g->rayc.side == 0 && g->rayc.rayDirX < 0)
         g->text.texX = g->text.texWidth - g->text.texX - 1;
-    if (g->rayc.side == 1 && g->rayc.rayDirY < 0)
+    if (g->rayc.side == 1 && g->rayc.rayDirY > 0)
         g->text.texX = g->text.texWidth - g->text.texX - 1;
-
     g->text.step = 1.0 * g->text.texHeight / g->text.lineH;
     g->text.texPos = (g->text.drawStart - SH / 2 + g->text.lineH / 2) * g->text.step;
 }

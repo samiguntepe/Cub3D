@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 13:04:20 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:42:44 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	inits(t_file *fl)
 {
 	char	*ptr;
 
+	ptr = NULL;
 	fl->EA = NULL;
 	fl->SO = NULL;
 	fl->WE = NULL;
@@ -25,8 +26,6 @@ void	inits(t_file *fl)
 	fl->F = NULL;
 	fl->map_h = 0;
 	fl->map_w = 0;
-	fl->control_index[0] = NULL;
-	fl->control_index[1] = NULL;
 	ptr = fl->verify;
 	ft_strcpy(&ptr, "NO SO WE EA ");
 }
@@ -62,6 +61,8 @@ void	inits_rgb(t_game *g)
 	= create_trgb(0, ft_atoi(ptr_f[0]), ft_atoi(ptr_f[1]), ft_atoi(ptr_f[2]));
 	g->text.ceiling 
 	= create_trgb(0, ft_atoi(ptr_c[0]), ft_atoi(ptr_c[1]), ft_atoi(ptr_c[2]));
+	double_array_free(ptr_f, 3);
+	double_array_free(ptr_c, 3);
 }
 
 void	texture_init(t_game *g)

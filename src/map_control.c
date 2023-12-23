@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 08:33:16 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:27:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,29 +98,11 @@ int	control_rgb_comma(char *kod)
 	}
 	if(i != 3)
 		return 1;
+	double_array_free(ptr, i);
 	return 0;
 }
 
 void	map_control(t_file *fl)
 {
 	(void)fl;
-}
-
-void	upload_control_index(t_file *fl)
-{
-	int	i;
-	
-	i = 0;
-	fl->control_index[0] = ft_freejoin(fl->control_index[0], fl->C);
-	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->F);
-	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->WE);
-	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->NO);
-	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->EA);
-	fl->control_index[0] = ft_strjoin(fl->control_index[0], fl->SO);
-	while (fl->map[i])
-	{
-		fl->control_index[1] = ft_strjoin(fl->control_index[1], fl->map[i]);
-		i++;
-	}
-	fl->control_index[2] = NULL;
 }

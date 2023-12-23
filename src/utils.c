@@ -6,14 +6,14 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:31 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 17:13:43 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:23:10 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
     size_t len_s1 = 0;
     size_t len_s2 = 0;
@@ -42,7 +42,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
     return result;
 }
 
-char	*ft_freejoin(const char *s1, const char *s2)
+char	*ft_freejoin(char *s1, char *s2)
 {
     size_t len_s1 = 0;
     size_t len_s2 = 0;

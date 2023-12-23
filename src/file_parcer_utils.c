@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parcer_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
+/*   By: hasik <hasik@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 09:54:18 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:22:40 by hasik            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ char	*set_textures(char *str)
 	if (str == NULL)
 		exit(printf("Wrong, texturex path!\nError\n"));
 	new = ft_strtrim(str, "NSOWEA ");
+	free(str);
 	return (new);
 }

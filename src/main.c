@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 13:07:09 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:43:00 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 	int 	n;
 
-	init_struct(&game);
+	game.file = (t_file *)malloc(sizeof(t_file));
 	inits(game.file);
     if (argc != 2)
         exit(printf("Wrong, arguments count!"));
-    
 	game.file->fd = open(argv[1], O_RDONLY);
     if (game.file->fd == -1) {
         printf("File can't open!");

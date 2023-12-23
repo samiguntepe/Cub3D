@@ -6,7 +6,7 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2023/12/23 15:14:05 by sguntepe         ###   ########.fr        #
+#    Updated: 2023/12/23 19:38:45 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRCS    	= ./src/main.c ./src/read_file.c ./src/file_parcer.c \
 			 ./src/file_parcer_utils.c ./src/utils.c ./src/file_split.c \
 			 ./src/map_control.c ./src/utils_next_one.c ./src/utils_next.c \
 			 ./src/key.c ./src/location.c ./src/file_split_utils.c \
-			 ./src/keyInit.c ./src/player_find.c ./src/path_finder.c \
-			 ./src/leaks.c ./src/init_struct.c
+			 ./src/player_find.c ./src/path_finder.c \
+			 ./src/leaks.c
 OBJS    	= $(addprefix obj/, $(SRCS:.c=.o))
 OFLAGS		= -framework OpenGL -framework AppKit
 MINILIBX	= ./minilibx/libmlx.a
@@ -55,7 +55,7 @@ clean:
 	@rm -rf $(OBJS)
 	@rm -f ./minilibx/*.o
 	@rm -rf obj
-	@rm .DS_Store
+	@rm -rf .DS_Store
 	@rm -rf .vscode
 	@rm -rf cub3D.dSYM
 

@@ -6,15 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/21 17:05:35 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:33:32 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
 #include <unistd.h>
-
-#define BUFFER_SIZE 1024
 
 char	*read_file(t_file *fl)
 {

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:20 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 15:14:59 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:30:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int moveRelease(int keyCode, t_game *g)
     return (0);
 }
 
-// int	press_close_key()
-// {
-// 	printf("\n\033[0;35mGame is closed!\033[0m\n");
-// 	exit(1);
-// }
+int	press_close_key()
+{
+	printf("\n\033[0;35mGame is closed!\033[0m\n");
+	exit(1);
+}

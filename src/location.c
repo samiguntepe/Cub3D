@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:27 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 15:55:26 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:32:41 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void rotate(t_game *g)
     double oldDirX;
     double oldPlaneX;
 
-    if (g->left)
+    if (g->right)
     {
         oldDirX = g->rayc.dirX;
         g->rayc.dirX = g->rayc.dirX * cos(g->rspeed) - g->rayc.dirY * sin(g->rspeed);
@@ -27,7 +27,7 @@ void rotate(t_game *g)
         g->rayc.planeX = g->rayc.planeX * cos(g->rspeed) - g->rayc.planeY * sin(g->rspeed);
         g->rayc.planeY = oldPlaneX * sin(g->rspeed) + g->rayc.planeY * cos(g->rspeed);
     }
-    if (g->right)
+    if (g->left)
     {
         oldDirX = g->rayc.dirX;
         g->rayc.dirX = g->rayc.dirX * cos(g->rspeed) + g->rayc.dirY * sin(g->rspeed);

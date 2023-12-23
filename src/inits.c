@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 20:55:08 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:04:20 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	inits(t_file *fl)
 	fl->control_index[0] = NULL;
 	fl->control_index[1] = NULL;
 	ptr = fl->verify;
-	ft_strcpy(&ptr, "NO ./SO ./WE ./EA ./");
+	ft_strcpy(&ptr, "NO SO WE EA ");
 }
 
 void	game_inits(t_game *g)
 {
-	g->mlx = mlx_init();
+	
 	g->w = false;
     g->a = false;
     g->s = false;
@@ -69,22 +69,22 @@ void	texture_init(t_game *g)
 	g->text.imgNO = malloc(sizeof(t_image));
 	if (!g->text.imgNO)
 		{
-			exit(printf("%s\n", "Error\n"));
+			exit(printf("Error\n"));
 		}
 	g->text.imgSO = malloc(sizeof(t_image));
 	if (!g->text.imgNO)
 		{
-			exit(printf("%s\n", "Error\n"));
+			exit(printf("Error\n"));
 		}
 	g->text.imgWE = malloc(sizeof(t_image));
 	if (!g->text.imgNO)
 		{
-			exit(printf("%s\n", "Error\n"));
+			exit(printf("Error\n"));
 		}
 	g->text.imgEA = malloc(sizeof(t_image));
 	if (!g->text.imgNO)
 		{
-			exit(printf("%s\n", "Error\n"));
+			exit(printf("Error\n"));
 		}
 }
 
@@ -94,9 +94,18 @@ void	texture_init_next(t_game *g)
 	int k;
 	
 	g->text.imgNO->img = mlx_xpm_file_to_image(g->mlx,g->file->NO, &n, &n);
+	if(g->text.imgNO->img == NULL)
+		exit(printf("Wrong, texture path!\nError\n"));
 	g->text.imgSO->img = mlx_xpm_file_to_image(g->mlx,g->file->SO, &n, &n);
+	if(g->text.imgSO->img == NULL)
+		exit(printf("Wrong, texture path!\nError\n"));
 	g->text.imgEA->img = mlx_xpm_file_to_image(g->mlx,g->file->EA, &n, &n);
+	if(g->text.imgEA->img == NULL)
+		exit(printf("Wrong, texture path!\nError\n"));
 	g->text.imgWE->img = mlx_xpm_file_to_image(g->mlx,g->file->WE, &n, &n);
+	if(g->text.imgWE->img == NULL)
+		exit(printf("Wrong, texture path!\nError\n"));
+
 	g->text.imgNO->addr = (int *)mlx_get_data_addr(g->text.imgNO->img, &k, &k, &k);
 	g->text.imgSO->addr = (int *)mlx_get_data_addr(g->text.imgSO->img, &k, &k, &k);
 	g->text.imgEA->addr = (int *)mlx_get_data_addr(g->text.imgEA->img, &k, &k, &k);

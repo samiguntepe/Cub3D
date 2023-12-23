@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:24 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 19:30:27 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:21:16 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void calculate(t_game *g)
 
 void raycast(t_game *g, t_file *fl)
 {
-    int x = 0;
-    while (x++ < SW)
+    int x = -1;
+    while (++x < SW)
     {
         init(g, x);
         init2(g);

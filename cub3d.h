@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 20:57:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:25:17 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef	struct s_file
 	char	*EA;
 	char	*F;
 	char	*C;
-	char	verify[20];
+	char	verify[12];
 	char	**lines;
 	char	*whole_lines;
 	char	*control_index[3];
@@ -187,6 +187,11 @@ char	*ft_freejoin(const char *s1, const char *s2);
 void 	str_cpy(char *destination, const char *source);
 void	map_control(t_file *fl);
 void	map_name_control(char *map_name);
+
+void	double_array_free(char **arr, int len);
+void	game_free(t_game *g);
+void	init_struct(t_game *g);
+void	doubleInt_array_free(int **arr, int len);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 20:09:25 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:21:05 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void draw2(t_game *g)
 
 void draw3(t_game *g, int x)
 {
-    int y = 0;
-    while (y++ < SH)
+    int y = -1;
+    while (++y < SH)
     {
         g->text.texY = (int)g->text.texPos;
         if (y < g->text.drawStart)

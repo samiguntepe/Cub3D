@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_split_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hasik <hasik@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:35 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:22:39 by hasik            ###   ########.fr       */
+/*   Updated: 2023/12/24 15:40:54 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-char *strtok_custom(char *str, const char *delim) {
-    static char *ptr = NULL;
-    if (str != NULL) {
+char	*strtok_custom(char *str, const char *delim)
+{
+	static char *ptr = NULL;
+    if (str != NULL)
+	{
         ptr = str;
     } else if (ptr == NULL) {
         return NULL;
@@ -104,10 +106,10 @@ char *strtok_custom(char *str, const char *delim) {
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*m;
 	size_t	start;
 	size_t	end;
 	size_t	i;
+	char	*m;
 
 	if (!s1 || !set)
 		return (NULL);

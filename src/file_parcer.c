@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:40:24 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:20:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@
 void	file_parcer(t_file *file)
 {
 	file->whole_lines = read_file(file);
-	file->lines = split_lines(file->whole_lines);
+	file->lines = split_lines(file->whole_lines, 0, 0, 0);
+
+	printf("%s", file->lines[0]);
+	exit(1);
+	
 	find_textures(file, 0);
-	find_rgb(file);
-	file->F = set_rgb(file->F);
-	file->C = set_rgb(file->C);
+	find_rgb(file, 0, 0, 0);
+	file->F = set_rgb(file->F, 0, 0);
+	file->C = set_rgb(file->C, 0, 0);
 	file->EA = set_textures(file->EA);
 	file->WE = set_textures(file->WE);
 	file->SO = set_textures(file->SO);
@@ -30,17 +34,14 @@ void	file_parcer(t_file *file)
 	find_map(file);
 }
 
-char	*set_rgb(char *str)
+char	*set_rgb(char *str, int i, int count)
 {
-	int		i;
-	int		count;
-	char	*new;
 	char	temp[12];
+	char	*new;
 
-	
 	i = 1;
 	count = 0;
-	new = NULL;	
+	new = NULL;
 	if (str == NULL)
 		exit(printf("Wrong, rgb path!\nError\n"));
 	while (str[i] != '\0')
@@ -54,10 +55,10 @@ char	*set_rgb(char *str)
 	}
 	temp[count] = '\0';
 	if (control_rgb_comma(temp))
-		exit(printf("Wrong, rgb path!\nError\n"));
+		exit (printf("Wrong, rgb path!\nError\n"));
 	ft_strcpy(&new, temp);
 	if (!control_rgb_path(str, new))
-		exit(printf("Wrong, rgb path!\nError\n"));
+		exit (printf("Wrong, rgb path!\nError\n"));
 	free(str);
 	return (new);
 }
@@ -66,10 +67,9 @@ void	find_map(t_file *fl)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 0;
-	
 	while (fl->lines[i])
 	{
 		if (control_components(fl->lines[i]))
@@ -85,6 +85,7 @@ void	find_map(t_file *fl)
 		i++;
 	}
 }
+
 void	map_size(t_file *fl)
 {
 	int	i;

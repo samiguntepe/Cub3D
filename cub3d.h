@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:33:35 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:15:48 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,13 @@ typedef struct s_game
 	t_file		*file;
 } t_game;
 
+//map check
+int horizontalcheck(char **map, int i, int j, int flag);
+int verticalcheck(char **map, int i, int j, int flag);
+int check_map_surrounded(t_game *game);
+
+
+
 // //GAME
 int		movePress(int keyCode, t_game *g);
 int		moveRelease(int keyCode, t_game *g);
@@ -164,12 +171,13 @@ void	file_parcer(t_file *file);
 void	inits(t_file *fl);
 void	find_textures(t_file *fl, int textures);
 void	copy_textures(t_file *fl, int textures, int i);
-char 	**split_lines(const char *str);
+char	**split_lines(const char *str, int line_count, size_t start, int i);
+char	**split_lines_free(char **lines, int i);
 int		line_counter(const char *str);
 int 	get_line_length(const char *str, int line_number, char sep);
 void	copy_rgb(t_file *fl, int comma_count, char type, int i);
-void	find_rgb(t_file *fl);
-char	*set_rgb(char *str);
+void	find_rgb(t_file *fl, int f_count, int c_count, int i);
+char	*set_rgb(char *str, int i, int count);
 int		control_rgb_path(char *mainStr, char *subStr);
 int		control_rgb_comma(char *kod);
 char	**ft_split(char const *s, char c);

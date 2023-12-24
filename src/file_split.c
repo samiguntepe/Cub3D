@@ -6,53 +6,45 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:43 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 09:01:36 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:19:47 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
 
-char **split_lines(const char *str)
+char	**split_lines(const char *str, int line_count, size_t start, int i)
 {
-	int line_count;
-	int i = 0;
-	size_t start = 0;
-	int line_length = 0;
-	int j = 0;
-	
-	line_count = line_counter(str);
-	char **lines = (char **)malloc((line_count + 1) * sizeof(char *));
-	if (!lines)
-		return NULL;
+    char **lines;
+	int line_length;
 
-
-	while ((str[start] != '\0') && (start < ft_strlen(str)))
+    lines = (char **)malloc((line_count + 1) * sizeof(char *));
+    if (!lines)
+        return NULL;
+	start = 0;
+    i = 0;
+    while (i < line_count)
 	{
-		line_length = get_line_length(str, i, '\n');
-		if (line_length == -1)
-			break;
+        line_length = get_line_length(str, start, '\n');
+        if (line_length == -1)
+            break;
+        lines[i] = (char *)malloc((line_length + 1) * sizeof(char));
+        if (!lines[i])
+			return (split_lines_free(lines, i));
+        ft_strlcpy(lines[i], &str[start], line_length + 1);
+        start += line_length + 1;
+        i++;
+    }
+    lines[i] = NULL;
+    return lines;
+}
 
-		lines[i] = (char *)malloc((line_length + 1) * sizeof(char));
-
-		if (!lines[i]) 
-		{
-			while (j < i)
-			{
-				free(lines[j]);
-				j++;
-			}
-			free(lines);
-			return NULL;
-		}
-
-		ft_strlcpy(lines[i], &str[start], line_length);
-		lines[i][line_length] = '\0';
-		start += line_length + 1;
-		i++;
-	}
-	lines[i] = NULL;
-	return lines;
+char	**split_lines_free(char **lines, int i)
+{
+	while (i > 0)
+        free(lines[--i]);
+    free(lines);
+    return NULL;
 }
 
 int	line_counter(const char *str)

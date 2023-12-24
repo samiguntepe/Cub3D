@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:20 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:30:58 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 11:37:02 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int movePress(int keyCode, t_game *g)
 	if (keyCode == 53)
 	{
 		game_free(g);
-		system("leaks cub3D");
+		// system("leaks cub3D");
 		exit(0);
 	}
     if (keyCode == 13)

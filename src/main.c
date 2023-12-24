@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:43:00 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:14:20 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
     }
     map_name_control(argv[1]);
     file_parcer(game.file);
+	check_map_surrounded(&game);
 	// testMap(&file);
 	find_player(game.file, &game);
 	inits_rgb(&game);

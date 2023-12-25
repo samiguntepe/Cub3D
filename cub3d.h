@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 13:26:18 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 20:02:19 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,16 @@ int control_rgb_comma(char *code);
 int	split_and_validate_rgb(const char *code);
 int count_commas(const char *code);
 int validate_number(int num);
+
+
+void	sur_control(t_file *fl);
+char	**loc_around_space(t_file *fl,char	**spc_map, int i, int j);
+char	**around_space(t_file *fl,char **spc_map, int i, size_t j);
+
+void test(char **spc_map, int map_h);
+bool hasSpaceAround(char **map, int row, int col, int rows, int *rowLengths);
+bool hasSpaceDiagonally(char **map, int row, int col, int rows, int *rowLengths);
+bool isMapValid(char **map, int rows);
 
 
 

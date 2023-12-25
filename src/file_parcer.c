@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 14:20:28 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 20:02:27 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	file_parcer(t_file *file)
 	file->NO = set_textures(file->NO);
 	map_size(file);
 	find_map(file);
+	sur_control(file);
 }
 
 char	*set_rgb(char *str, int i, int count)

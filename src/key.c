@@ -6,53 +6,52 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:20 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/24 11:37:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 12:35:41 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int movePress(int keyCode, t_game *g)
+int	move_press(int key_code, t_game *g)
 {
-	if (keyCode == 53)
+	if (key_code == 53)
 	{
 		game_free(g);
-		// system("leaks cub3D");
 		exit(0);
 	}
-    if (keyCode == 13)
-        g->w = true;
-    if (keyCode == 1)
-        g->s = true;
-    if (keyCode == 0)
-        g->a = true;
-    if (keyCode == 2)
-        g->d = true;
-    if (keyCode == 124)
-        g->right = true;
-    if (keyCode == 123)
-        g->left = true;
-    return (0);
+	if (key_code == 13)
+		g->w = true;
+	if (key_code == 1)
+		g->s = true;
+	if (key_code == 0)
+		g->a = true;
+	if (key_code == 2)
+		g->d = true;
+	if (key_code == 124)
+		g->right = true;
+	if (key_code == 123)
+		g->left = true;
+	return (0);
 }
 
-int moveRelease(int keyCode, t_game *g)
+int	move_release(int key_code, t_game *g)
 {
-    if (keyCode == 13)
-        g->w = false;
-    if (keyCode == 1)
-        g->s = false;
-    if (keyCode == 0)
-        g->a = false;
-    if (keyCode == 2)
-        g->d = false;
-    if (keyCode == 124)
-        g->right = false;
-    if (keyCode == 123)
-        g->left = false;
-    return (0);
+	if (key_code == 13)
+		g->w = false;
+	if (key_code == 1)
+		g->s = false;
+	if (key_code == 0)
+		g->a = false;
+	if (key_code == 2)
+		g->d = false;
+	if (key_code == 124)
+		g->right = false;
+	if (key_code == 123)
+		g->left = false;
+	return (0);
 }
 
-int	press_close_key()
+int	press_close_key(void)
 {
 	printf("\n\033[0;35mGame is closed!\033[0m\n");
 	exit(1);

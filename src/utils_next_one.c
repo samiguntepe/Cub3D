@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:17:34 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/22 09:07:59 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:28:15 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,9 @@ void	map_name_control(char *map_name)
 	}
 	else
 		exit(printf("Wrong, map name!"));
+}
+
+int	create_rgb(int r, int g, int b)
+{
+	return ((r * 256 * 256) + (g * 256) + b);
 }

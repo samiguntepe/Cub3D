@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:26:47 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 18:15:20 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:46:05 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (s == NULL)
+		return (0);
 	i = 0;
 	while (s[i])
 	{
@@ -59,10 +61,11 @@ void	ft_strcpy(char **destination, const char *source)
 		(*destination)[i] = source[i];
 		i++;
 	}
-	// (*destination)[i] = '\0';
+	(*destination)[i] = 0;
 }
 
-void	str_cpy(char *destination, const char *source) {
+void	str_cpy(char *destination, const char *source)
+{
 	while (*source != '\0')
 	{
 		*destination = *source;

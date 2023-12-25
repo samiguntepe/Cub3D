@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/24 16:20:58 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:20:28 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@
 void	file_parcer(t_file *file)
 {
 	file->whole_lines = read_file(file);
-	file->lines = split_lines(file->whole_lines, 0, 0, 0);
-
-	printf("%s", file->lines[0]);
-	exit(1);
-	
+	file->line_count = line_counter(file->whole_lines);
+	file->lines = split_lines(file->whole_lines, file->line_count, 0, 0);
 	find_textures(file, 0);
 	find_rgb(file, 0, 0, 0);
 	file->F = set_rgb(file->F, 0, 0);
@@ -57,7 +54,7 @@ char	*set_rgb(char *str, int i, int count)
 	if (control_rgb_comma(temp))
 		exit (printf("Wrong, rgb path!\nError\n"));
 	ft_strcpy(&new, temp);
-	if (!control_rgb_path(str, new))
+	if (!control_rgb_path(str, new, 0, 0))
 		exit (printf("Wrong, rgb path!\nError\n"));
 	free(str);
 	return (new);
@@ -72,7 +69,7 @@ void	find_map(t_file *fl)
 	j = 0;
 	while (fl->lines[i])
 	{
-		if (control_components(fl->lines[i]))
+		if (control_components(fl->lines[i], 0, 0, 0))
 		{
 			fl->map_w = ft_strlen(fl->lines[i]);
 			fl->map[j] = ft_calloc(fl->map_w, (sizeof(char *) + 1));
@@ -80,7 +77,7 @@ void	find_map(t_file *fl)
 			fl->map[j][fl->map_w] = '\0';
 			j++;
 		}
-		if (j > 0 && !(control_components(fl->lines[i])))
+		if (j > 0 && !(control_components(fl->lines[i], 0, 0, 0)))
 			exit(printf("Wrong map!\nError\n"));
 		i++;
 	}
@@ -94,7 +91,7 @@ void	map_size(t_file *fl)
 	fl->map_h = 0;
 	while (fl->lines[i])
 	{
-		if (control_components(fl->lines[i]))
+		if (control_components(fl->lines[i], 0, 0, 0))
 			fl->map_h++;
 		i++;
 	}

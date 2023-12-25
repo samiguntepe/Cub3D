@@ -6,71 +6,34 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:31 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:23:10 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:17:43 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, size_t len_s1, size_t len_s2)
 {
-    size_t len_s1 = 0;
-    size_t len_s2 = 0;
+	char	*result;
+	size_t	total_len;
 
-    if (s1 != NULL)
-        len_s1 = ft_strlen(s1);
-    if (s2 != NULL)
-        len_s2 = ft_strlen(s2);
-
-    size_t total_len = len_s1 + len_s2;
-    char *result;
-
-    if (s1 == NULL && s2 == NULL)
-        return NULL;
-
-    result = (char *)malloc(sizeof(char) * (total_len + 1));
-    if (result == NULL)
-        return NULL;
-
-    if (len_s1 > 0)
-        str_cpy(result, s1);
-    if (len_s2 > 0)
-        str_cpy(result + len_s1, s2);
-
-    result[total_len] = '\0';
-    return result;
-}
-
-char	*ft_freejoin(char *s1, char *s2)
-{
-    size_t len_s1 = 0;
-    size_t len_s2 = 0;
-
-    if (s2 != NULL)
-        len_s2 = ft_strlen(s2);
-    if (s1 != NULL)
-        len_s1 = ft_strlen(s1);
-	else
-		s1 = malloc(sizeof(char) * len_s2 + 1);
-
-    size_t total_len = len_s1 + len_s2;
-    char *result;
-
-    if (s1 == NULL && s2 == NULL)
-        return NULL;
-
-    result = (char *)malloc(sizeof(char) * (total_len + 1));
-    if (result == NULL)
-        return NULL;
-
-    if (len_s1 > 0)
-        ft_strcpy(&result, s1);
-    if (len_s2 > 0)
-        ft_strcpy(&result + len_s1, s2);
-
-    result[total_len] = '\0';
-    return result;
+	if (s1 != NULL)
+		len_s1 = ft_strlen(s1);
+	if (s2 != NULL)
+		len_s2 = ft_strlen(s2);
+	total_len = len_s1 + len_s2;
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	result = (char *)malloc(sizeof(char) * (total_len + 1));
+	if (result == NULL)
+		return (NULL);
+	if (len_s1 > 0)
+		str_cpy(result, s1);
+	if (len_s2 > 0)
+		str_cpy(result + len_s1, s2);
+	result[total_len] = '\0';
+	return (result);
 }
 
 char	*ft_strdup(const char *s1)
@@ -100,7 +63,7 @@ int	ft_atoi(const char *str)
 	s = 0;
 	while (*str == '\t' || *str == '\n' || *str == '\v'
 		|| *str == '\f' || *str == '\r' || *str == ' ')
-			str++;
+		str++;
 	if (*str == '-')
 	{
 		d = d * -1;

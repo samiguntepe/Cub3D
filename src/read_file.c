@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/23 19:33:32 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:23:01 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 
 char	*read_file(t_file *fl)
 {
-    int		bytes;
-    char	buffer[BUFFER_SIZE + 1];
-    char	*file;
-    char	*temp_str;
+	int		bytes;
+	char	buffer[BUFFER_SIZE + 1];
+	char	*file;
+	char	*temp_str;
 
-    file = NULL;
+	file = NULL;
 	bytes = 1;
-    while (bytes > 0)
-    {
+	while (bytes > 0)
+	{
 		bytes = read(fl->fd, buffer, BUFFER_SIZE);
-        buffer[bytes] = '\0';
-        temp_str = ft_strjoin(file, buffer);
-        free(file);
-        file = temp_str;
-    }
-    if (bytes < 0)
+		buffer[bytes] = '\0';
+		temp_str = ft_strjoin(file, buffer, 0, 0);
+		free(file);
+		file = temp_str;
+	}
+	if (bytes < 0)
 		exit(printf("Error\n"));
-    return (file);
+	return (file);
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:35 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/24 15:40:54 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:20:19 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,38 +70,6 @@ char	**ft_split(char const *s, char c)
 		}
 	}
 	return (arr);
-}
-
-char	*strtok_custom(char *str, const char *delim)
-{
-	static char *ptr = NULL;
-    if (str != NULL)
-	{
-        ptr = str;
-    } else if (ptr == NULL) {
-        return NULL;
-    }
-    while (*ptr != '\0' && ft_strchr(delim, *ptr) != NULL) {
-        ptr++;
-    }
-
-    if (*ptr == '\0')
-        return NULL;
-
-    char *start = ptr;
-
-    while (*ptr != '\0' && ft_strchr(delim, *ptr) == NULL) {
-        ptr++;
-    }
-    if (*ptr != '\0')
-	{
-        if (*(ptr + 1) == '\0' || ft_strchr(delim, *(ptr + 1)) != NULL) {
-            return NULL;
-		}
-		*ptr = '\0';
-        ptr++;
-    }
-	return start;
 }
 
 char	*ft_strtrim(char const *s1, char const *set)

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:30:33 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 11:20:22 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:36:06 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int	check_map_char(t_file *fl, int rows)
 			c = fl->spc_map[i][j];
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				if (space_around(fl, i, j, rows) || space_diagon(fl, i, j, rows))
+				if (space_around(fl, i, j, rows)
+					|| space_diagon(fl, i, j, rows))
 					return (0);
 			}
 			j++;

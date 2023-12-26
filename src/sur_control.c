@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:46 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 10:30:12 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:36:23 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_row_spaces(char *row, size_t length)
 		row[l] = ' ';
 		l++;
 	}
-	row[length] = '\0';
+	row[length - 1] = '\0';
 }
 
 int	is_map_valid(t_file *fl, int rows)

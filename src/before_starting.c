@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   before_starting.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 15:22:06 by sguntepe         ###   ########.fr       */
+/*   Created: 2023/12/26 16:04:50 by sguntepe          #+#    #+#             */
+/*   Updated: 2023/12/26 16:12:49 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
-#include <unistd.h>
 
-char	*read_file(t_file *fl)
+void	before_starting(t_game *g)
 {
-	int		bytes;
-	char	buffer[BUFFER_SIZE + 1];
-	char	*file;
-	char	*temp_str;
-
-	file = NULL;
-	bytes = 1;
-	while (bytes > 0)
-	{
-		bytes = read(fl->fd, buffer, BUFFER_SIZE);
-		buffer[bytes] = '\0';
-		temp_str = ft_strjoin(file, buffer, 0, 0);
-		free(file);
-		file = temp_str;
-	}
-	if (bytes < 0)
-		exit(printf("Error\n"));
-	return (file);
+	file_parcer(g->file);
+	control_companent(g->file, 0, 0);
+	find_player(g->file, g);
+	inits_rgb(g);
+	texture_init(g);
+	texture_init_next(g);
+	game_inits(g);
+	g->mlxwin = mlx_new_window(g->mlx, SW, SH, "cub3D");
 }

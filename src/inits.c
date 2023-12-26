@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 13:27:25 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 15:38:06 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	inits(t_file *fl)
 	char	*ptr;
 
 	ptr = NULL;
-	fl->EA = NULL;
-	fl->SO = NULL;
-	fl->WE = NULL;
-	fl->NO = NULL;
-	fl->C = NULL;
-	fl->F = NULL;
+	fl->ea = NULL;
+	fl->no = NULL;
+	fl->we = NULL;
+	fl->so = NULL;
+	fl->c = NULL;
+	fl->f = NULL;
 	fl->map_h = 0;
 	fl->map_w = 0;
 	ptr = fl->verify;
@@ -40,8 +40,8 @@ void	game_inits(t_game *g)
 	g->right = false;
 	g->speed = 0.100f;
 	g->rspeed = 0.05f;
-	g->text.texHeight = 64;
-	g->text.texWidth = 64;
+	g->text.tx_height = 64;
+	g->text.tx_width = 64;
 }
 
 void	inits_rgb(t_game *g)
@@ -49,8 +49,8 @@ void	inits_rgb(t_game *g)
 	char	**ptr_f;
 	char	**ptr_c;
 
-	ptr_f = ft_split(g->file->F, ',');
-	ptr_c = ft_split(g->file->C, ',');
+	ptr_f = ft_split(g->file->f, ',');
+	ptr_c = ft_split(g->file->c, ',');
 	g->text.floor
 		= create_rgb(ft_atoi(ptr_f[0]),
 			ft_atoi(ptr_f[1]), ft_atoi(ptr_f[2]));
@@ -63,17 +63,17 @@ void	inits_rgb(t_game *g)
 
 void	texture_init(t_game *g)
 {
-	g->text.imgNO = malloc(sizeof(t_image));
-	if (!g->text.imgNO)
+	g->text.imgno = malloc(sizeof(t_image));
+	if (!g->text.imgno)
 		exit(printf("Error\n"));
-	g->text.imgSO = malloc(sizeof(t_image));
-	if (!g->text.imgNO)
+	g->text.imgso = malloc(sizeof(t_image));
+	if (!g->text.imgso)
 		exit(printf("Error\n"));
-	g->text.imgWE = malloc(sizeof(t_image));
-	if (!g->text.imgNO)
+	g->text.imgwe = malloc(sizeof(t_image));
+	if (!g->text.imgwe)
 		exit(printf("Error\n"));
-	g->text.imgEA = malloc(sizeof(t_image));
-	if (!g->text.imgNO)
+	g->text.imgea = malloc(sizeof(t_image));
+	if (!g->text.imgea)
 		exit(printf("Error\n"));
 }
 
@@ -82,24 +82,24 @@ void	texture_init_next(t_game *g)
 	int	n;
 	int	k;
 
-	g->text.imgNO->img = mlx_xpm_file_to_image(g->mlx, g->file->NO, &n, &n);
-	if (g->text.imgNO->img == NULL)
+	g->text.imgno->img = mlx_xpm_file_to_image(g->mlx, g->file->no, &n, &n);
+	if (g->text.imgno->img == NULL)
 		exit(printf("Wrong, texture path!\nError\n"));
-	g->text.imgSO->img = mlx_xpm_file_to_image(g->mlx, g->file->SO, &n, &n);
-	if (g->text.imgSO->img == NULL)
+	g->text.imgso->img = mlx_xpm_file_to_image(g->mlx, g->file->so, &n, &n);
+	if (g->text.imgso->img == NULL)
 		exit(printf("Wrong, texture path!\nError\n"));
-	g->text.imgEA->img = mlx_xpm_file_to_image(g->mlx, g->file->EA, &n, &n);
-	if (g->text.imgEA->img == NULL)
+	g->text.imgea->img = mlx_xpm_file_to_image(g->mlx, g->file->ea, &n, &n);
+	if (g->text.imgea->img == NULL)
 		exit(printf("Wrong, texture path!\nError\n"));
-	g->text.imgWE->img = mlx_xpm_file_to_image(g->mlx, g->file->WE, &n, &n);
-	if (g->text.imgWE->img == NULL)
+	g->text.imgwe->img = mlx_xpm_file_to_image(g->mlx, g->file->we, &n, &n);
+	if (g->text.imgwe->img == NULL)
 		exit(printf("Wrong, texture path!\nError\n"));
-	g->text.imgNO->addr
-		= (int *)mlx_get_data_addr(g->text.imgNO->img, &k, &k, &k);
-	g->text.imgSO->addr
-		= (int *)mlx_get_data_addr(g->text.imgSO->img, &k, &k, &k);
-	g->text.imgEA->addr
-		= (int *)mlx_get_data_addr(g->text.imgEA->img, &k, &k, &k);
-	g->text.imgWE->addr
-		= (int *)mlx_get_data_addr(g->text.imgWE->img, &k, &k, &k);
+	g->text.imgno->addr
+		= (int *)mlx_get_data_addr(g->text.imgno->img, &k, &k, &k);
+	g->text.imgso->addr
+		= (int *)mlx_get_data_addr(g->text.imgso->img, &k, &k, &k);
+	g->text.imgea->addr
+		= (int *)mlx_get_data_addr(g->text.imgea->img, &k, &k, &k);
+	g->text.imgwe->addr
+		= (int *)mlx_get_data_addr(g->text.imgwe->img, &k, &k, &k);
 }

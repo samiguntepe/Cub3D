@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 10:30:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:18:38 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,19 @@ void	test(t_file *fl, int map_h)
 		printf("okey");
 	else
 		exit(printf("not okey"));
+}
+
+int	space_diagon(t_file *fl, int row, int col, int rows)
+{
+    if (row > 0 && col > 0 && fl->spc_map[row - 1][col - 1] == ' ')
+        return (1);
+    if (row > 0 && col < fl->rowlen[row - 1] - 1
+	&& fl->spc_map[row - 1][col + 1] == ' ')
+        return (1);
+    if (row < rows - 1 && col > 0 && fl->spc_map[row + 1][col - 1] == ' ')
+        return (1);
+    if (row < rows - 1 && col < fl->rowlen[row + 1] - 1
+	&& fl->spc_map[row + 1][col + 1] == ' ')
+        return (1);
+    return (0);
 }

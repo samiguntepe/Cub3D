@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 12:07:10 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:15:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,27 @@ int	count_commas(const char *code)
 		code++;
 	}
 	return (commas);
+}
+
+void	control_companent(t_file *fl, int i, int j)
+{
+	int	count;
+
+	count = 0;
+	while (fl->map[i])
+	{
+		j = 0;
+		while (fl->map[i][j])
+		{
+			if (fl->map[i][j] == 'N' || fl->map[i][j] == 'S'
+			|| fl->map[i][j] == 'E' || fl->map[i][j] == 'W')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	if (SH > 1080 || SW > 1920)
+		exit(printf("Wrong window size!"));
+	if (count > 1 || count == 0)
+		exit(printf("Wrong map!"));
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 06:56:13 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 10:49:26 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	}
 	map_name_control(argv[1]);
 	file_parcer(game.file);
+	control_companent(game.file, 0, 0);
 	find_player(game.file, &game);
 	inits_rgb(&game);
 	game.mlx = mlx_init();
@@ -44,6 +45,7 @@ int	main(int argc, char **argv)
 	game.img->addr = (int *)mlx_get_data_addr(game.img->img, &n, &n, &n);
 	mlx_hook(game.mlxWin, 2, 1L << 0, move_press, &game);
 	mlx_hook(game.mlxWin, 3, 1L << 1, move_release, &game);
+	mlx_hook(game.mlxWin, 17, 0, close_window, &game);
 	mlx_loop_hook(game.mlx, &game_loop, &game);
 	mlx_loop(game.mlx);
 	return (0);

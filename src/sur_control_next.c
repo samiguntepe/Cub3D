@@ -6,13 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:30:33 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 10:30:34 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:20:22 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	has_space_around(t_file *fl, int row, int col, int rows)
+int	space_around(t_file *fl, int row, int col, int rows)
 {
 	if (row > 0 && fl->spc_map[row - 1][col] == ' ')
 		return (1);
@@ -63,10 +63,8 @@ int	check_map_char(t_file *fl, int rows)
 			c = fl->spc_map[i][j];
 			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
-				if (has_space_around(fl, i, j, rows))
-				{
+				if (space_around(fl, i, j, rows) || space_diagon(fl, i, j, rows))
 					return (0);
-				}
 			}
 			j++;
 		}

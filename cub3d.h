@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 10:14:58 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:20:00 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 #define EA_Texture 3
 
 //
-# define SW 640
-# define SH 480
+# define SW 1024
+# define SH 768
 #define BUFFER_SIZE 1024
 
 //MAP
@@ -151,6 +151,7 @@ void	game_inits(t_game *g);
 void	inits_rgb(t_game *g);
 int		create_rgb(int r, int g, int b);
 int		press_close_key();
+int close_window(void *game);
 
 //MAP
 size_t	ft_strlen(const char *s);
@@ -204,7 +205,7 @@ void	sur_control(t_file *fl);
 char	**loc_around_space(t_file *fl,char	**spc_map, int i, int j);
 
 void	test(t_file *fl, int map_h);
-int		has_space_around(t_file *fl, int row, int col, int rows);
+int		space_diagon(t_file *fl, int row, int col, int rows);
 int 	is_map_valid(t_file *fl, int rows);
 void 	fill_row_map_data(char *row, const char *map_row, size_t max_length);
 void 	init_row_spaces(char *row, size_t length);
@@ -213,5 +214,7 @@ char	**around_space(t_file *fl, char **spc_map);
 int 	check_map_char(t_file *fl, int rows);
 void	fill_row_len(t_file *fl, int rows);
 void	loc_row_len(t_file *fl, int rows);
+void	control_companent(t_file *fl, int i, int j);
+int		space_around(t_file *fl, int row, int col, int rows);
 
 #endif

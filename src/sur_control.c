@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:46 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 20:16:35 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 10:30:12 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,146 +17,74 @@
 
 void	sur_control(t_file *fl)
 {
-	char **spc_map = NULL;
-	spc_map = loc_around_space(fl, spc_map, 0, 1);
-	spc_map = around_space(fl, spc_map, 0, 0);
-	// int len = fl->map_h + 2;
-	// test(spc_map, len);
-	printf("%s\n",spc_map[0]);
-	printf("%s\n",spc_map[1]);
-	printf("%s\n",spc_map[2]);
-	printf("%s\n",spc_map[3]);
-	printf("%s\n",spc_map[4]);
-	printf("%s\n",spc_map[5]);
-	printf("%s\n",spc_map[6]);
-	
+	int		len;
+
+	fl->spc_map = NULL;
+	fl->spc_map = loc_around_space(fl, fl->spc_map, 0, 1);
+	fl->spc_map = around_space(fl, fl->spc_map);
+	len = fl->map_h + 2;
+	test(fl, len);
 }
 
-char	**loc_around_space(t_file *fl,char	**spc_map, int i, int j)
+size_t	find_max_len(t_file *fl)
 {
-	int len = 0;
-	spc_map = malloc((fl->map_h + 3) * sizeof(char *));
-	len = fl->map_h +1;
-	len++;
-	while (i < len)
+	size_t	current_length;
+	size_t	max_length;
+	int		i;
+
+	max_length = 0;
+	i = 0;
+	while (i < fl->map_h)
 	{
-		spc_map[i] = malloc((ft_strlen(fl->map[j]) + 2) * sizeof(char));
+		current_length = ft_strlen(fl->map[i]);
+		if (current_length > max_length)
+			max_length = current_length;
 		i++;
 	}
-	spc_map[i] = NULL;
-	return (spc_map);
+	return (max_length);
 }
 
-char	**around_space(t_file *fl,char **spc_map, int i, size_t j)
+void	init_row_spaces(char *row, size_t length)
 {
-	int k;
-	int l;
+	size_t	l;
 
-	k = 0;
-	while (fl->map[i])
+	l = 0;
+	while (l < length)
 	{
-		j = 0;
-		l = 0;
-		while (fl->map[i][j])
-		{
-			spc_map[k][l] = fl->map[i][j];
+		row[l] = ' ';
+		l++;
+	}
+	row[length] = '\0';
+}
 
-			if (l == 0 || k == 0)
-			{
-				spc_map[k][l] = 'B';
-			}
-				j++;
-				l++;
-		}
-		spc_map[k][l] = '\0';
+int	is_map_valid(t_file *fl, int rows)
+{
+	int	isvalid;
+
+	loc_row_len(fl, rows);
+	fill_row_len(fl, rows);
+	isvalid = check_map_char(fl, rows);
+	free(fl->rowlen);
+	return (isvalid);
+}
+
+char	**around_space(t_file *fl, char **spc_map)
+{
+	size_t	max_length;
+	int		i;
+	int		k;
+
+	max_length = find_max_len(fl);
+	init_row_spaces(spc_map[0], max_length + 2);
+	i = 0;
+	k = 1;
+	while (i < fl->map_h)
+	{
+		fill_row_map_data(spc_map[k], fl->map[i], max_length);
 		i++;
 		k++;
 	}
-	j = 0;
-	l = 0;
-	i--;
-	while (j < ft_strlen(fl->map[i]))
-	{
-		spc_map[k][l] = 'B';
-		j++;
-		l++;
-	}
-	k++;
-	spc_map[k] = NULL;
-	return spc_map;
-}
-
-bool hasSpaceAround(char **map, int row, int col, int rows, int *rowLengths)
-{
-    // Üst kontrolü
-    if (row > 0 && map[row - 1][col] == ' ') {
-        return true;
-    }
-    // Alt kontrolü
-    if (row < rows - 1 && map[row + 1][col] == ' ') {
-        return true;
-    }
-    // Sol kontrolü
-    if (col > 0 && map[row][col - 1] == ' ') {
-        return true;
-    }
-    // Sağ kontrolü
-    if (col < rowLengths[row] - 1 && map[row][col + 1] == ' ')
-    {
-        return true;
-    }
-    else if (col == rowLengths[row] - 1 && map[row][col + 1] == '\0')
-    {
-        return true;
-    }
-    return false;
-}
-bool hasSpaceDiagonally(char **map, int row, int col, int rows, int *rowLengths) {
-    // Sol Üst kontrolü
-    if (row > 0 && col > 0 && map[row - 1][col - 1] == ' ') {
-        return true;
-    }
-    // Sağ Üst kontrolü
-    if (row > 0 && col < rowLengths[row - 1] - 1 && map[row - 1][col + 1] == ' ') {
-        return true;
-    }
-    // Sol Alt kontrolü
-    if (row < rows - 1 && col > 0 && map[row + 1][col - 1] == ' ') {
-        return true;
-    }
-    // Sağ Alt kontrolü
-    if (row < rows - 1 && col < rowLengths[row + 1] - 1 && map[row + 1][col + 1] == ' ') {
-        return true;
-    }
-    return false;
-}
-bool isMapValid(char **map, int rows) {
-    int rowLengths[rows];
-    for (int i = 0; i < rows; i++) {
-        rowLengths[i] = ft_strlen(map[i]);
-    }
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < rowLengths[i]; j++) {
-            if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
-			|| map[i][j] == 'E' || map[i][j] == 'W')
-            {
-                if (hasSpaceAround(map, i, j, rows, rowLengths))
-                {
-                    return false;
-                }
-                if (hasSpaceDiagonally(map, i, j, rows, rowLengths))
-                {
-                    return false;
-                }
-            }
-        }
-    }
-    return true;
-}
-void test(char **spc_map, int map_h)
-{
-    if (isMapValid(spc_map, map_h))
-        printf("okey");
-    else
-        exit(printf("not okey"));
+	init_row_spaces(spc_map[fl->map_h + 1], max_length + 2);
+	spc_map[fl->map_h + 2] = NULL;
+	return (spc_map);
 }

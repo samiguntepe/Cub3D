@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 20:02:19 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 10:14:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef	struct s_file
 	int		map_w;
 	int		line_count;
 	int		fd;
+	int		*rowlen;
+	char	**spc_map;
 }	t_file;
 
 //GAME
@@ -192,21 +194,24 @@ void	double_array_free(char **arr, int len);
 void	game_free(t_game *g);
 void	doubleint_array_free(int **arr, int len);
 
-int control_rgb_comma(char *code);
-int	split_and_validate_rgb(const char *code);
-int count_commas(const char *code);
-int validate_number(int num);
+int 	control_rgb_comma(char *code);
+int		split_and_validate_rgb(const char *code);
+int 	count_commas(const char *code);
+int 	validate_number(int num);
 
 
 void	sur_control(t_file *fl);
 char	**loc_around_space(t_file *fl,char	**spc_map, int i, int j);
-char	**around_space(t_file *fl,char **spc_map, int i, size_t j);
 
-void test(char **spc_map, int map_h);
-bool hasSpaceAround(char **map, int row, int col, int rows, int *rowLengths);
-bool hasSpaceDiagonally(char **map, int row, int col, int rows, int *rowLengths);
-bool isMapValid(char **map, int rows);
-
-
+void	test(t_file *fl, int map_h);
+int		has_space_around(t_file *fl, int row, int col, int rows);
+int 	is_map_valid(t_file *fl, int rows);
+void 	fill_row_map_data(char *row, const char *map_row, size_t max_length);
+void 	init_row_spaces(char *row, size_t length);
+size_t	find_max_len(t_file *fl);
+char	**around_space(t_file *fl, char **spc_map);
+int 	check_map_char(t_file *fl, int rows);
+void	fill_row_len(t_file *fl, int rows);
+void	loc_row_len(t_file *fl, int rows);
 
 #endif

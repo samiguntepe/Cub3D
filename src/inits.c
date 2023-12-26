@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 15:38:06 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:25:33 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	inits_rgb(t_game *g)
 	g->text.ceiling
 		= create_rgb(ft_atoi(ptr_c[0]),
 			ft_atoi(ptr_c[1]), ft_atoi(ptr_c[2]));
-	double_array_free(ptr_f, 3);
-	double_array_free(ptr_c, 3);
+	double_array_free(ptr_f);
+	double_array_free(ptr_c);
 }
 
 void	texture_init(t_game *g)

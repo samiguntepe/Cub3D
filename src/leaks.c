@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 15:23:47 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:16:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	game_free(t_game *g)
 	free(g->file->so);
 	free(g->file->f);
 	free(g->file->c);
-	double_array_free(g->file->map, g->file->map_h);
-	double_array_free(g->file->lines, len);
+	double_array_free(g->file->map);
+	double_array_free(g->file->lines);
 	free(g->file->whole_lines);
 	mlx_destroy_image(g->mlx, g->text.imgea);
 	mlx_destroy_image(g->mlx, g->text.imgno);
@@ -35,45 +35,17 @@ void	game_free(t_game *g)
 	free(g->file);
 }
 
-void	double_array_free(char **arr, int len)
+void	double_array_free(char **arr)
 {
 	int	i;
 
 	i = 0;
-	if (arr == NULL)
+	if (!arr)
 		return ;
-	while (i < len)
+	while (arr[i])
 	{
 		free(arr[i]);
 		i++;
 	}
 	free(arr);
-}
-
-void	doubleint_array_free(int **arr, int len)
-{
-	int	i;
-
-	i = 0;
-	if (arr == NULL)
-	{
-		return ;
-	}
-	if (len == 0)
-	{
-		free(arr[0]);
-		arr[0] = NULL;
-		free(arr[1]);
-		arr[1] = NULL;
-		free(arr[2]);
-		arr[2] = NULL;
-	}
-	while (i < len)
-	{
-		free(arr[i]);
-		arr[i] = NULL;
-		i++;
-	}
-	free(arr);
-	arr = NULL;
 }

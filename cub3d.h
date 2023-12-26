@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 20:17:34 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 21:16:13 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ void	map_size(t_file *fl);
 void	str_cpy(char *destination, const char *source);
 void	map_control(t_file *fl);
 void	map_name_control(char *map_name);
-void	double_array_free(char **arr, int len);
+void	double_array_free(char **arr);
 void	game_free(t_game *g);
 int		control_rgb_comma(char *code);
 int		split_and_validate_rgb(const char *code);
@@ -200,5 +200,6 @@ int		space_around(t_file *fl, int row, int col, int rows);
 void	before_starting(t_game *g);
 void	game_exit(t_game *g, char *msg);
 char	*ft_strjoin_char(char *s1, char c);
+void	next(t_game *g);
 
 #endif

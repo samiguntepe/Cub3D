@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 15:31:52 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/24 15:32:37 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	find_textures(t_file *fl, int textures)
 
 void	copy_textures(t_file *fl, int textures, int i)
 {
-	if (textures == NO_TEXTURE)
-		ft_strcpy(&(fl->no), fl->lines[i]);
-	else if (textures == SO_TEXTURE)
-		ft_strcpy(&(fl->so), fl->lines[i]);
-	else if (textures == WE_TEXTURE)
-		ft_strcpy(&(fl->we), fl->lines[i]);
-	else if (textures == EA_TEXTURE)
-		ft_strcpy(&(fl->ea), fl->lines[i]);
+	if (textures == NO_Texture)
+		ft_strcpy(&(fl->NO), fl->lines[i]);
+	else if (textures == SO_Texture)
+		ft_strcpy(&(fl->SO), fl->lines[i]);
+	else if (textures == WE_Texture)
+		ft_strcpy(&(fl->WE), fl->lines[i]);
+	else if (textures == EA_Texture)
+		ft_strcpy(&(fl->EA), fl->lines[i]);
 	else
 		exit(printf("Wrong, texturex path!\nError\n"));
 }
@@ -88,12 +88,12 @@ void	copy_rgb(t_file *fl, int comma_count, char type, int i)
 	if (type == 'F')
 	{
 		if (comma_count == 2)
-			ft_strcpy(&(fl->f), fl->lines[i]);
+			ft_strcpy(&(fl->F), fl->lines[i]);
 	}
 	else if (type == 'C')
 	{
 		if (comma_count == 2)
-			ft_strcpy(&(fl->c), fl->lines[i]);
+			ft_strcpy(&(fl->C), fl->lines[i]);
 	}
 	else
 		exit(printf("Wrong, texturex path!\nError\n"));

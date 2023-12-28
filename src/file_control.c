@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 21:26:27 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 11:15:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ int	split_and_validate_rgb(const char *code)
 		num = ft_atoi(ptr[i]);
 		if (!validate_number(num))
 		{
-			double_array_free(ptr);
+			double_array_free(ptr, i);
 			return (0);
 		}
 		i++;
 	}
 	if (i != 3)
 	{
-		double_array_free(ptr);
+		double_array_free(ptr, i);
 		return (0);
 	}
-	double_array_free(ptr);
+	double_array_free(ptr, i);
 	return (1);
 }
 

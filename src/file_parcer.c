@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 20:31:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/26 07:43:25 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,40 +21,40 @@ void	file_parcer(t_file *file)
 	file->lines = split_lines(file->whole_lines, file->line_count, 0, 0);
 	find_textures(file, 0);
 	find_rgb(file, 0, 0, 0);
-	file->f = set_rgb(file->f, 0);
-	file->c = set_rgb(file->c, 0);
-	file->ea = set_textures(file->ea);
-	file->we = set_textures(file->we);
-	file->so = set_textures(file->so);
-	file->no = set_textures(file->no);
+	file->F = set_rgb(file->F, 0, 0);
+	file->C = set_rgb(file->C, 0, 0);
+	file->EA = set_textures(file->EA);
+	file->WE = set_textures(file->WE);
+	file->SO = set_textures(file->SO);
+	file->NO = set_textures(file->NO);
 	map_size(file);
 	find_map(file);
 	sur_control(file);
 }
 
-char	*set_rgb(char *str, int i)
+char	*set_rgb(char *str, int i, int count)
 {
-	char	*temp;
+	char	temp[12];
 	char	*new;
 
 	i = 1;
-	temp = (char *)malloc(1);
-	temp[0] = '\0';
+	count = 0;
 	new = NULL;
 	if (str == NULL)
 		exit(printf("Wrong, rgb path!\nError\n"));
 	while (str[i] != '\0')
 	{
-		if (str[i] > 32 || (str[i] >= '0' && str[i] <= '9'))
+		if ((str[i] > 32 && count < 11) || (str[i] >= '0' && str[i] <= '9'))
 		{
-			new = ft_strjoin_char(temp, str[i]);
-			free(temp);
-			temp = new;
+			temp[count] = str[i];
+			count++;
 		}
 		i++;
 	}
-	if (control_rgb_comma(new))
+	temp[count] = '\0';
+	if (control_rgb_comma(temp))
 		exit (printf("Wrong, rgb path!\nError\n"));
+	ft_strcpy(&new, temp);
 	if (!control_rgb_path(str, new, 0, 0))
 		exit (printf("Wrong, rgb path!\nError\n"));
 	free(str);
@@ -105,23 +105,4 @@ void	map_size(t_file *fl)
 		fl->map[i] = NULL;
 		i++;
 	}
-}
-
-char	*ft_strjoin_char(char *s1, char c)
-{
-	size_t	len_s1;
-	size_t	total_len;
-	char	*result;
-
-	if (s1 == NULL)
-		return (NULL);
-	len_s1 = ft_strlen(s1);
-	total_len = len_s1 + 1;
-	result = (char *)malloc(sizeof(char) * (total_len + 1));
-	if (result == NULL)
-		return (NULL);
-	str_cpy(result, s1);
-	result[len_s1] = c;
-	result[total_len] = '\0';
-	return (result);
 }

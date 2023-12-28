@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:51 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 15:20:41 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/25 09:26:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void	playerpos_ns(t_file *fl, t_game *g, int i, int j)
 {
 	if (fl->map[i][j] == 'N')
 	{
-		g->rayc.posx = j + 0.5;
-		g->rayc.posy = i + 0.5;
-		g->rayc.dirx = 0;
-		g->rayc.diry = -1;
-		g->rayc.planex = 0.66;
-		g->rayc.planey = 0;
+		g->rayc.posX = j + 0.5;
+		g->rayc.posY = i + 0.5;
+		g->rayc.dirX = 0;
+		g->rayc.dirY = -1;
+		g->rayc.planeX = 0.66;
+		g->rayc.planeY = 0;
 	}
 	else if (fl->map[i][j] == 'S')
 	{
-		g->rayc.posx = j + 0.5;
-		g->rayc.posy = i + 0.5;
-		g->rayc.dirx = 0;
-		g->rayc.diry = 1;
-		g->rayc.planex = -0.66;
-		g->rayc.planey = 0;
+		g->rayc.posX = j + 0.5;
+		g->rayc.posY = i + 0.5;
+		g->rayc.dirX = 0;
+		g->rayc.dirY = 1;
+		g->rayc.planeX = -0.66;
+		g->rayc.planeY = 0;
 	}
 }
 
@@ -57,20 +57,20 @@ void	playerpos_we(t_file *fl, t_game *g, int i, int j)
 {
 	if (fl->map[i][j] == 'W')
 	{
-		g->rayc.posx = j + 0.5;
-		g->rayc.posy = i + 0.5;
-		g->rayc.dirx = -1;
-		g->rayc.diry = 0;
-		g->rayc.planex = 0;
-		g->rayc.planey = -0.66;
+		g->rayc.posX = j + 0.5;
+		g->rayc.posY = i + 0.5;
+		g->rayc.dirX = -1;
+		g->rayc.dirY = 0;
+		g->rayc.planeX = 0;
+		g->rayc.planeY = -0.66;
 	}
 	else if (fl->map[i][j] == 'E')
 	{
-		g->rayc.posx = j + 0.5;
-		g->rayc.posy = i + 0.5;
-		g->rayc.dirx = 1;
-		g->rayc.diry = 0;
-		g->rayc.planex = 0;
-		g->rayc.planey = +0.66;
+		g->rayc.posX = j + 0.5;
+		g->rayc.posY = i + 0.5;
+		g->rayc.dirX = 1;
+		g->rayc.dirY = 0;
+		g->rayc.planeX = 0;
+		g->rayc.planeY = +0.66;
 	}
 }

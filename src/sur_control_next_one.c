@@ -6,23 +6,22 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/26 14:35:24 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:39:33 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	**loc_around_space(t_file *fl, char **spc_map, int i, int j)
+char	**loc_around_space(t_file *fl, char **spc_map, int i)
 {
 	int	len;
 
 	len = 0;
 	spc_map = malloc((fl->map_h + 3) * sizeof(char *));
-	len = fl->map_h +1;
-	len++;
+	len = fl->map_h +3;
 	while (i < len)
 	{
-		spc_map[i] = malloc((ft_strlen(fl->map[j]) + 3) * sizeof(char));
+		spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
 		i++;
 	}
 	spc_map[i] = NULL;
@@ -39,15 +38,15 @@ void	test(t_file *fl, int map_h)
 
 int	space_diagon(t_file *fl, int row, int col, int rows)
 {
-	if (row > 0 && col > 0 && fl->spc_map[row - 1][col - 1] == ' ')
-		return (1);
-	if (row > 0 && col < fl->rowlen[row - 1] - 1
-		&& fl->spc_map[row - 1][col + 1] == ' ')
-		return (1);
-	if (row < rows - 1 && col > 0 && fl->spc_map[row + 1][col - 1] == ' ')
-		return (1);
-	if (row < rows - 1 && col < fl->rowlen[row + 1] - 1
-		&& fl->spc_map[row + 1][col + 1] == ' ')
-		return (1);
-	return (0);
+    if (row > 0 && col > 0 && fl->spc_map[row - 1][col - 1] == ' ')
+        return (1);
+    if (row > 0 && col < fl->rowlen[row - 1] - 1
+	&& fl->spc_map[row - 1][col + 1] == ' ')
+        return (1);
+    if (row < rows - 1 && col > 0 && fl->spc_map[row + 1][col - 1] == ' ')
+        return (1);
+    if (row < rows - 1 && col < fl->rowlen[row + 1] - 1
+	&& fl->spc_map[row + 1][col + 1] == ' ')
+        return (1);
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/28 15:42:08 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/29 14:43:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@
 # define SH 768
 #define BUFFER_SIZE 1024
 
-//MAP
+//declaration
+typedef struct s_file t_file;
+typedef struct s_texture t_texture;
+typedef struct s_game t_game;
+typedef struct s_image t_image;
+
 typedef	struct s_file
 {
 	char	**map;
@@ -167,7 +172,6 @@ char	*set_textures(char *str);
 char	*ft_strjoin(char *s1, char *s2, size_t len_s1, size_t len_s2);
 char 	*read_file(t_file *fl);
 void	file_parcer(t_file *file);
-void	inits(t_file *fl);
 void	find_textures(t_file *fl, int textures);
 void	copy_textures(t_file *fl, int textures, int i);
 char	**split_lines(const char *str, int line_count, size_t start, int i);
@@ -217,5 +221,15 @@ void	fill_row_len(t_file *fl, int rows);
 void	loc_row_len(t_file *fl, int rows);
 void	control_companent(t_file *fl, int i, int j);
 int		space_around(t_file *fl, int row, int col, int rows);
+
+//inits
+t_file	*init_t_file(void);
+t_image	*init_t_image(void);
+void	init_t_texture(t_texture *texture);
+void	inits(t_game *game);
+void	init_t_raycast(t_raycast *raycast);
+void	init_t_game(t_game *game);
+void	upload_image(t_game *g);
+
 
 #endif

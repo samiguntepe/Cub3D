@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/28 15:39:33 by sguntepe         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:11:24 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 char	**loc_around_space(t_file *fl, char **spc_map, int i)
 {
-	int	len;
+    int	len;
 
-	len = 0;
-	spc_map = malloc((fl->map_h + 3) * sizeof(char *));
-	len = fl->map_h +3;
-	while (i < len)
-	{
-		spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
-		i++;
-	}
-	spc_map[i] = NULL;
-	return (spc_map);
+    len = 0;
+    spc_map = malloc((fl->map_h + 3) * sizeof(char *));
+    len = fl->map_h + 3;
+    while (i < len)
+    {
+        spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
+        if (i == len - 1)
+            spc_map[i] = NULL;
+        i++;
+    }
+    return (spc_map);
 }
 
 void	test(t_file *fl, int map_h)

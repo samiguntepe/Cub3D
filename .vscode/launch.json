@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "/Users/sguntepe/Desktop/Cub3D/cub3D",
-			"args": ["dasda"],
+			"args": ["maps/mapfile.cub"],
 			"cwd": "${workspaceFolder}"
 		}
 	]

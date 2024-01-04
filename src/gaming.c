@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:24 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 09:48:41 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:28:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,48 +24,48 @@ int	game_loop(t_game *g)
 
 void	init(t_game *g, int x)
 {
-	g->rayc.cameraX = 2 * x / (double)SW - 1;
-	g->rayc.rayDirX = g->rayc.dirX + g->rayc.planeX * g->rayc.cameraX;
-	g->rayc.rayDirY = g->rayc.dirY + g->rayc.planeY * g->rayc.cameraX;
-	g->rayc.mapX = (int)g->rayc.posX;
-	g->rayc.mapY = (int)g->rayc.posY;
+	g->rayc.camera_x = 2 * x / (double)SW - 1;
+	g->rayc.raydir_x = g->rayc.dir_x + g->rayc.plane_x * g->rayc.camera_x;
+	g->rayc.raydir_y = g->rayc.dir_y + g->rayc.plane_y * g->rayc.camera_x;
+	g->rayc.map_x = (int)g->rayc.pos_x;
+	g->rayc.map_y = (int)g->rayc.pos_y;
 }
 
 void	init2(t_game *g)
 {
-	if (g->rayc.rayDirX == 0)
-		g->rayc.deltaDistX = 1e30;
+	if (g->rayc.raydir_x == 0)
+		g->rayc.deltadist_x = 1e30;
 	else
-		g->rayc.deltaDistX = fabs(1 / g->rayc.rayDirX);
-	if (g->rayc.rayDirY == 0)
-		g->rayc.deltaDistY = 1e30;
+		g->rayc.deltadist_x = fabs(1 / g->rayc.raydir_x);
+	if (g->rayc.raydir_y == 0)
+		g->rayc.deltadist_y = 1e30;
 	else
-		g->rayc.deltaDistY = fabs(1 / g->rayc.rayDirY);
+		g->rayc.deltadist_y = fabs(1 / g->rayc.raydir_y);
 }
 
 void	calculate(t_game *g)
 {
-	if (g->rayc.rayDirX < 0)
+	if (g->rayc.raydir_x < 0)
 	{
-		g->rayc.stepX = -1;
-		g->rayc.sideDistX = (g->rayc.posX - g->rayc.mapX) * g->rayc.deltaDistX;
+		g->rayc.step_x = -1;
+		g->rayc.sidedist_x = (g->rayc.pos_x - g->rayc.map_x) * g->rayc.deltadist_x;
 	}
 	else
 	{
-		g->rayc.stepX = 1;
-		g->rayc.sideDistX
-			= (g->rayc.mapX + 1.0 - g->rayc.posX) * g->rayc.deltaDistX;
+		g->rayc.step_x = 1;
+		g->rayc.sidedist_x
+			= (g->rayc.map_x + 1.0 - g->rayc.pos_x) * g->rayc.deltadist_x;
 	}
-	if (g->rayc.rayDirY < 0)
+	if (g->rayc.raydir_y < 0)
 	{
-		g->rayc.stepY = -1;
-		g->rayc.sideDistY = (g->rayc.posY - g->rayc.mapY) * g->rayc.deltaDistY;
+		g->rayc.step_y = -1;
+		g->rayc.sidedist_y = (g->rayc.pos_y - g->rayc.map_y) * g->rayc.deltadist_y;
 	}
 	else
 	{
-		g->rayc.stepY = 1;
-		g->rayc.sideDistY
-			= (g->rayc.mapY + 1.0 - g->rayc.posY) * g->rayc.deltaDistY;
+		g->rayc.step_y = 1;
+		g->rayc.sidedist_y
+			= (g->rayc.map_y + 1.0 - g->rayc.pos_y) * g->rayc.deltadist_y;
 	}
 }
 
@@ -85,5 +85,5 @@ void	raycast(t_game *g, t_file *fl)
 		draw2(g);
 		draw3(g, x, -1);
 	}
-	mlx_put_image_to_window(g->mlx, g->mlxWin, g->img->img, 0, 0);
+	mlx_put_image_to_window(g->mlx, g->mlxwin, g->img->img, 0, 0);
 }

@@ -1,6 +1,6 @@
 NO ./textures/42N.xpm
 SO ./textures/42S.xpm
-WE  ./textures/42W.xpm
+WE ./textures/42W.xpm
 EA ./textures/42E.xpm
 
 F 238,173,14

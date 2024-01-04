@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/29 14:59:32 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:38:43 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	file_parcer(t_file *file)
 	file->lines = split_lines(file->whole_lines, file->line_count, 0, 0);
 	find_textures(file, 0);
 	find_rgb(file, 0, 0, 0);
-	file->F = set_rgb(file->F, 0, 0);
-	file->C = set_rgb(file->C, 0, 0);
-	file->EA = set_textures(file->EA);
-	file->WE = set_textures(file->WE);
-	file->SO = set_textures(file->SO);
-	file->NO = set_textures(file->NO);
+	file->f = set_rgb(file->f, 0, 0);
+	file->c = set_rgb(file->c, 0, 0);
+	file->ea = set_textures(file->ea);
+	file->we = set_textures(file->we);
+	file->so = set_textures(file->so);
+	file->no = set_textures(file->no);
 	map_size(file);
 	find_map(file);
 	sur_control(file);

@@ -6,7 +6,7 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2023/12/26 10:53:09 by sguntepe         ###   ########.fr        #
+#    Updated: 2024/01/04 13:34:22 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS    	= ./src/main.c ./src/read_file.c ./src/file_parcer.c \
 			 ./src/key.c ./src/location.c ./src/file_split_utils.c \
 			 ./src/player_find.c ./src/sur_control.c ./src/sur_control_next.c \
 			 ./src/leaks.c ./src/file_control.c ./src/sur_control_next_one.c \
-			 ./src/exit_map.c
+			 ./src/exit_map.c ./src/inits_next.c
 OBJS    	= $(addprefix obj/, $(SRCS:.c=.o))
 OFLAGS		= -framework OpenGL -framework AppKit
 MINILIBX	= ./minilibx/libmlx.a
@@ -57,7 +57,6 @@ clean:
 	@rm -f ./minilibx/*.o
 	@rm -rf obj
 	@rm -rf .DS_Store
-	@rm -rf .vscode
 	@rm -rf cub3D.dSYM
 
 fclean: clean
@@ -68,5 +67,6 @@ re: fclean all
 
 norm:
 	@norminette src
+	@norminette cub3d.h
 
 .PHONY: all clean fclean re norm

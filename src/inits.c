@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:36:36 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:52:28 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	init_t_texture(t_texture *texture)
 	texture->draw_end = 0;
 	texture->tex_x = 0;
 	texture->tex_y = 0;
-	texture->text_width = 0;
-	texture->text_height = 0;
+	texture->text_w = 0;
+	texture->text_h = 0;
 	texture->imgno = NULL;
 	texture->imgso = NULL;
 	texture->imgwe = NULL;
@@ -108,6 +108,6 @@ void	init_t_game(t_game *game)
 	game->right = false;
 	game->speed = 0.100f;
 	game->rspeed = 0.05f;
-	game->text.text_height = 64;
-	game->text.text_width = 64;
+	game->text.text_h = 64;
+	game->text.text_w = 64;
 }

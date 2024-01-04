@@ -6,18 +6,17 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:41:14 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:51:05 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h>
 # include "minilibx/mlx.h"
-# include <math.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
 # include <stdbool.h>
 
 # define NO_TEXTURE 0
@@ -71,8 +70,8 @@ typedef struct s_texture
 	int			draw_end;
 	int			tex_x;
 	int			tex_y;
-	int			text_width;
-	int			text_height;
+	int			text_w;
+	int			text_h;
 	t_image		*imgno;
 	t_image		*imgso;
 	t_image		*imgwe;
@@ -118,7 +117,7 @@ typedef struct s_game
 	float		rspeed;
 	t_image		*img;
 	t_texture	text;
-	t_raycast	rayc;
+	t_raycast	ray;
 	t_file		*file;
 }	t_game;
 
@@ -209,7 +208,6 @@ void	inits(t_game *game);
 void	init_t_raycast(t_raycast *raycast);
 void	init_t_game(t_game *game);
 void	upload_image(t_game *g);
-void	inits_mlx(t_game *game);
 void	next(t_game *g);
 
 #endif

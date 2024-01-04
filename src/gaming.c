@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:24 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:28:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:43:10 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <math.h>
 
 int	game_loop(t_game *g)
 {
@@ -24,48 +25,48 @@ int	game_loop(t_game *g)
 
 void	init(t_game *g, int x)
 {
-	g->rayc.camera_x = 2 * x / (double)SW - 1;
-	g->rayc.raydir_x = g->rayc.dir_x + g->rayc.plane_x * g->rayc.camera_x;
-	g->rayc.raydir_y = g->rayc.dir_y + g->rayc.plane_y * g->rayc.camera_x;
-	g->rayc.map_x = (int)g->rayc.pos_x;
-	g->rayc.map_y = (int)g->rayc.pos_y;
+	g->ray.camera_x = 2 * x / (double)SW - 1;
+	g->ray.raydir_x = g->ray.dir_x + g->ray.plane_x * g->ray.camera_x;
+	g->ray.raydir_y = g->ray.dir_y + g->ray.plane_y * g->ray.camera_x;
+	g->ray.map_x = (int)g->ray.pos_x;
+	g->ray.map_y = (int)g->ray.pos_y;
 }
 
 void	init2(t_game *g)
 {
-	if (g->rayc.raydir_x == 0)
-		g->rayc.deltadist_x = 1e30;
+	if (g->ray.raydir_x == 0)
+		g->ray.deltadist_x = 1e30;
 	else
-		g->rayc.deltadist_x = fabs(1 / g->rayc.raydir_x);
-	if (g->rayc.raydir_y == 0)
-		g->rayc.deltadist_y = 1e30;
+		g->ray.deltadist_x = fabs(1 / g->ray.raydir_x);
+	if (g->ray.raydir_y == 0)
+		g->ray.deltadist_y = 1e30;
 	else
-		g->rayc.deltadist_y = fabs(1 / g->rayc.raydir_y);
+		g->ray.deltadist_y = fabs(1 / g->ray.raydir_y);
 }
 
 void	calculate(t_game *g)
 {
-	if (g->rayc.raydir_x < 0)
+	if (g->ray.raydir_x < 0)
 	{
-		g->rayc.step_x = -1;
-		g->rayc.sidedist_x = (g->rayc.pos_x - g->rayc.map_x) * g->rayc.deltadist_x;
+		g->ray.step_x = -1;
+		g->ray.sidedist_x = (g->ray.pos_x - g->ray.map_x) * g->ray.deltadist_x;
 	}
 	else
 	{
-		g->rayc.step_x = 1;
-		g->rayc.sidedist_x
-			= (g->rayc.map_x + 1.0 - g->rayc.pos_x) * g->rayc.deltadist_x;
+		g->ray.step_x = 1;
+		g->ray.sidedist_x
+			= (g->ray.map_x + 1.0 - g->ray.pos_x) * g->ray.deltadist_x;
 	}
-	if (g->rayc.raydir_y < 0)
+	if (g->ray.raydir_y < 0)
 	{
-		g->rayc.step_y = -1;
-		g->rayc.sidedist_y = (g->rayc.pos_y - g->rayc.map_y) * g->rayc.deltadist_y;
+		g->ray.step_y = -1;
+		g->ray.sidedist_y = (g->ray.pos_y - g->ray.map_y) * g->ray.deltadist_y;
 	}
 	else
 	{
-		g->rayc.step_y = 1;
-		g->rayc.sidedist_y
-			= (g->rayc.map_y + 1.0 - g->rayc.pos_y) * g->rayc.deltadist_y;
+		g->ray.step_y = 1;
+		g->ray.sidedist_y
+			= (g->ray.map_y + 1.0 - g->ray.pos_y) * g->ray.deltadist_y;
 	}
 }
 

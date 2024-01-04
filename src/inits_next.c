@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:37:48 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:49:08 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	inits(t_game *game)
 	init_t_texture(&game->text);
 	texture_init(game);
 	init_t_game(game);
-	init_t_raycast(&game->rayc);
+	init_t_raycast(&game->ray);
 }
 
 void	upload_image(t_game *g)

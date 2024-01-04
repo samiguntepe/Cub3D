@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:51 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:25:30 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:43:39 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void	playerpos_ns(t_file *fl, t_game *g, int i, int j)
 {
 	if (fl->map[i][j] == 'N')
 	{
-		g->rayc.pos_x = j + 0.5;
-		g->rayc.pos_y = i + 0.5;
-		g->rayc.dir_x = 0;
-		g->rayc.dir_y = -1;
-		g->rayc.plane_x = 0.66;
-		g->rayc.plane_y = 0;
+		g->ray.pos_x = j + 0.5;
+		g->ray.pos_y = i + 0.5;
+		g->ray.dir_x = 0;
+		g->ray.dir_y = -1;
+		g->ray.plane_x = 0.66;
+		g->ray.plane_y = 0;
 	}
 	else if (fl->map[i][j] == 'S')
 	{
-		g->rayc.pos_x = j + 0.5;
-		g->rayc.pos_y = i + 0.5;
-		g->rayc.dir_x = 0;
-		g->rayc.dir_y = 1;
-		g->rayc.plane_x = -0.66;
-		g->rayc.plane_y = 0;
+		g->ray.pos_x = j + 0.5;
+		g->ray.pos_y = i + 0.5;
+		g->ray.dir_x = 0;
+		g->ray.dir_y = 1;
+		g->ray.plane_x = -0.66;
+		g->ray.plane_y = 0;
 	}
 }
 
@@ -57,20 +57,20 @@ void	playerpos_we(t_file *fl, t_game *g, int i, int j)
 {
 	if (fl->map[i][j] == 'W')
 	{
-		g->rayc.pos_x = j + 0.5;
-		g->rayc.pos_y = i + 0.5;
-		g->rayc.dir_x = -1;
-		g->rayc.dir_y = 0;
-		g->rayc.plane_x = 0;
-		g->rayc.plane_y = -0.66;
+		g->ray.pos_x = j + 0.5;
+		g->ray.pos_y = i + 0.5;
+		g->ray.dir_x = -1;
+		g->ray.dir_y = 0;
+		g->ray.plane_x = 0;
+		g->ray.plane_y = -0.66;
 	}
 	else if (fl->map[i][j] == 'E')
 	{
-		g->rayc.pos_x = j + 0.5;
-		g->rayc.pos_y = i + 0.5;
-		g->rayc.dir_x = 1;
-		g->rayc.dir_y = 0;
-		g->rayc.plane_x = 0;
-		g->rayc.plane_y = +0.66;
+		g->ray.pos_x = j + 0.5;
+		g->ray.pos_y = i + 0.5;
+		g->ray.dir_x = 1;
+		g->ray.dir_y = 0;
+		g->ray.plane_x = 0;
+		g->ray.plane_y = +0.66;
 	}
 }

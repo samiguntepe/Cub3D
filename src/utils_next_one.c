@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:17:34 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 13:28:15 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:52:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
 
 char	*ft_strstr(const char *str, const char *substr)
 {

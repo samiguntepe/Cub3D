@@ -6,10 +6,11 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:35 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 13:20:19 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:08:09 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../cub3d.h"
 
 int	ft_checkset(char c, char const *set)

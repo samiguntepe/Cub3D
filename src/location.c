@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:27 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 16:43:27 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:12:38 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <math.h>
 
 void	rotate_right(t_game *g)
 {

@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:30:33 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:51:43 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:14:04 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdlib.h>
 
 int	space_around(t_file *fl, int row, int col, int rows)
 {

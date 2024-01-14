@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:26:47 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:53:36 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:15:05 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdlib.h>
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {

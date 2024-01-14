@@ -6,11 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:20 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:48:32 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:11:36 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
+#include <stdbool.h>
 
 int	move_press(int key_code, t_game *g)
 {

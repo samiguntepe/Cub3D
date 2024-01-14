@@ -6,13 +6,11 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 22:48:44 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:12:57 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../cub3d.h"
-#include <stdlib.h>
 
 int	control_components(char *map_line, int len, int count, int isspace)
 {

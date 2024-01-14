@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:48:13 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:13:41 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdlib.h>
 
 void	loc_around_space(t_file *fl, int i)
 {

@@ -6,13 +6,14 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:55:01 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:02:45 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdio.h>
 #include <fcntl.h>
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {

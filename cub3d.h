@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:53:19 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:16:21 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 # define CUB3D_H
 
 # include "minilibx/mlx.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
 # include <stdbool.h>
+# include <unistd.h>
 
 # define NO_TEXTURE 0
 # define SO_TEXTURE 1
@@ -29,7 +27,7 @@
 # define RED "\033[0;31m"
 # define CODE "\033[m"
 
-typedef struct s_game t_game;
+typedef struct s_game	t_game;
 
 typedef struct s_file
 {

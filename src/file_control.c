@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:49:15 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:05:28 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include "stdlib.h"
 
 int	split_and_validate_rgb(const char *code)
 {

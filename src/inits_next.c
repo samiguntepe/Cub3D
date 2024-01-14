@@ -6,11 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:57:41 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:11:03 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdlib.h>
 
 void	inits(t_game *game)
 {

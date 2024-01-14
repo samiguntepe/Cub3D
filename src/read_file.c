@@ -6,14 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:12 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:15:03 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:13:30 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 char	*read_file(t_file *fl)
 {

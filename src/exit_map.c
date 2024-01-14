@@ -6,11 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:36:27 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 01:26:35 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 02:16:02 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int	close_window(void *game)
 {

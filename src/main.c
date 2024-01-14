@@ -6,13 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 19:36:11 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:34:00 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <fcntl.h>
 
 int	main(int argc, char **argv)
@@ -27,7 +26,8 @@ int	main(int argc, char **argv)
 	game.file->fd = open(argv[1], O_RDONLY);
 	if (game.file->fd == -1)
 	{
-		printf("File can't open!");
+		exit_game(&game, "File can't open!");
+		free_game(&game);
 		return (0);
 	}
 	next(&game);

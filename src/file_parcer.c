@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 00:07:51 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:37:07 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,15 @@ void	file_parcer(t_file *file)
 	find_rgb(file, 0, 0, 0);
 	file->f = set_rgb(file->f, 0, 0);
 	file->c = set_rgb(file->c, 0, 0);
+	if (file->f == NULL || file->c == NULL)
+		exit_game(file->game, "Wrong RGB path!");
 	file->ea = set_textures(file->ea);
 	file->we = set_textures(file->we);
 	file->so = set_textures(file->so);
 	file->no = set_textures(file->no);
+	if (file->ea == NULL || file->we == NULL || file->so == NULL
+		|| file->no == NULL)
+		exit_game(file->game, "Wrong, textures path!");
 	map_size(file);
 	find_map(file);
 	sur_control(file);
@@ -41,7 +46,7 @@ char	*set_rgb(char *str, int i, int count)
 	count = 0;
 	new = NULL;
 	if (str == NULL)
-		exit(printf("Wrong, rgb path!\nError\n"));
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if ((str[i] > 32 && count < 11) || (str[i] >= '0' && str[i] <= '9'))
@@ -53,10 +58,10 @@ char	*set_rgb(char *str, int i, int count)
 	}
 	temp[count] = '\0';
 	if (control_rgb_comma(temp))
-		exit (printf("Wrong, rgb path!\nError\n"));
+		return (NULL);
 	ft_strcpy(&new, temp);
 	if (!control_rgb_path(str, new, 0, 0))
-		exit (printf("Wrong, rgb path!\nError\n"));
+		return (NULL);
 	free(str);
 	return (new);
 }
@@ -79,7 +84,7 @@ void	find_map(t_file *fl)
 			j++;
 		}
 		if (j > 0 && !(control_components(fl->lines[i], 0, 0, 0)))
-			exit(printf("Wrong map!\nError\n"));
+			exit_game(fl->game, "Map is wrong!");
 		i++;
 	}
 }
@@ -97,7 +102,7 @@ void	map_size(t_file *fl)
 		i++;
 	}
 	if (fl->map_h < 3)
-		exit(printf("Map is free!\nError\n"));
+		exit_game(fl->game, "Map is free!");
 	fl->map = ft_calloc(fl->map_h, (sizeof(char **) + 1));
 	i = 0;
 	while (i < fl->map_h)

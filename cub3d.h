@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 20:01:59 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:18:51 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@
 # define SH 768
 # define BUFFER_SIZE 1024
 
-typedef struct s_file		t_file;
-typedef struct s_texture	t_texture;
-typedef struct s_game		t_game;
-typedef struct s_image		t_image;
+typedef struct s_game t_game;
 
 typedef struct s_file
 {
@@ -51,6 +48,7 @@ typedef struct s_file
 	int		*rowlen;
 	char	**spc_map;
 	int		max_len;
+	t_game	*game;
 }	t_file;
 
 typedef struct s_image
@@ -76,6 +74,7 @@ typedef struct s_texture
 	t_image		*imgso;
 	t_image		*imgwe;
 	t_image		*imgea;
+	t_game		*game;
 }	t_texture;
 
 typedef struct s_raycast
@@ -103,7 +102,7 @@ typedef struct s_raycast
 	int			side;
 }	t_raycast;
 
-typedef struct s_game
+struct s_game
 {
 	void		*mlx;
 	void		*mlxwin;
@@ -119,7 +118,7 @@ typedef struct s_game
 	t_texture	text;
 	t_raycast	ray;
 	t_file		*file;
-}	t_game;
+};
 
 int		move_press(int key_code, t_game *g);
 int		move_release(int key_code, t_game *g);
@@ -211,6 +210,6 @@ void	free_space_map(char **spc_map);
 void	free_game(t_game *game);
 void	free_file(t_file *file);
 void	free_texture(t_texture *tex);
-void	free_image(t_image *img);
+void	exit_game(t_game *game, char *msg);
 
 #endif

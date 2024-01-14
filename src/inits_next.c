@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 19:54:23 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:48:25 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	upload_image(t_game *g)
 
 	g->text.imgno->img = mlx_xpm_file_to_image(g->mlx, g->file->no, &n, &n);
 	if (g->text.imgno->img == NULL)
-		exit(printf("Wrong, texture path!\nError\n"));
+		exit_game(g, "Wrong, texture path!");
 	g->text.imgso->img = mlx_xpm_file_to_image(g->mlx, g->file->so, &n, &n);
 	if (g->text.imgso->img == NULL)
-		exit(printf("Wrong, texture path!\nError\n"));
+		exit_game(g, "Wrong, texture path!");
 	g->text.imgea->img = mlx_xpm_file_to_image(g->mlx, g->file->ea, &n, &n);
 	if (g->text.imgea->img == NULL)
-		exit(printf("Wrong, texture path!\nError\n"));
+		exit_game(g, "Wrong, texture path!");
 	g->text.imgwe->img = mlx_xpm_file_to_image(g->mlx, g->file->we, &n, &n);
 	if (g->text.imgwe->img == NULL)
-		exit(printf("Wrong, texture path!\nError\n"));
+		exit_game(g, "Wrong, texture path!");
 	g->text.imgno->addr
 		= (int *)mlx_get_data_addr(g->text.imgno->img, &k, &k, &k);
 	g->text.imgso->addr
@@ -54,6 +54,7 @@ void	texture_init(t_game *g)
 	g->text.imgno = malloc(sizeof(t_image));
 	if (!g->text.imgno)
 		exit(printf("Error\n"));
+		exit_game(g, "");
 	g->text.imgso = malloc(sizeof(t_image));
 	if (!g->text.imgso)
 		exit(printf("Error\n"));

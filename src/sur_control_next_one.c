@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 19:40:55 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:38:21 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	test(t_file *fl, int map_h)
 	else
 	{
 		free_space_map(fl->spc_map);
-		exit(printf("not okey"));
+		exit_game(fl->game, "Map is not closed!");
 	}
 }
 

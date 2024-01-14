@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 22:22:34 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:36:21 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@ void	double_array_free(char **arr)
 	free(arr);
 }
 
-void	free_image(t_image *img)
+void	exit_game(t_game *game, char *msg)
 {
-	if (img)
+	if(msg)
 	{
-		free(img);
+		printf("%s Error\n", msg);
+		free_game(game);
+		exit(1);
+	}
+	else
+	{
+		free_game(game);
+		exit(0);
 	}
 }
 
@@ -39,10 +46,10 @@ void	free_texture(t_texture *tex)
 {
 	if (tex)
 	{
-		free_image(tex->imgno);
-		free_image(tex->imgso);
-		free_image(tex->imgwe);
-		free_image(tex->imgea);
+		free(tex->imgno);
+		free(tex->imgso);
+		free(tex->imgwe);
+		free(tex->imgea);
 	}
 }
 

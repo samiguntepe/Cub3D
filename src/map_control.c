@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 11:53:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:48:44 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,4 @@ int	control_rgb_path(char *mainStr, char *subStr, size_t i, size_t j)
 		i++;
 	}
 	return (0);
-}
-
-void	map_control(t_file *fl)
-{
-	(void)fl;
 }

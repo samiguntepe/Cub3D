@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:39:19 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:15:44 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	find_textures(t_file *fl, int textures)
 		i++;
 	}
 	if (textures != 4)
-		exit(printf("Wrong, texturex path!\nError\n"));
+		exit_game(fl->game, "Wrong, textures path!");
 }
 
 void	copy_textures(t_file *fl, int textures, int i)
@@ -52,7 +52,7 @@ void	copy_textures(t_file *fl, int textures, int i)
 	else if (textures == EA_TEXTURE)
 		ft_strcpy(&(fl->ea), fl->lines[i]);
 	else
-		exit(printf("Wrong, texturex path!\nError\n"));
+		exit_game(fl->game, "Wrong, textures path!");
 }
 
 void	find_rgb(t_file *fl, int f_count, int c_count, int i)
@@ -96,7 +96,7 @@ void	copy_rgb(t_file *fl, int comma_count, char type, int i)
 			ft_strcpy(&(fl->c), fl->lines[i]);
 	}
 	else
-		exit(printf("Wrong, texturex path!\nError\n"));
+		exit_game(fl->game, "Wrong, textures path!");
 }
 
 char	*set_textures(char *str)
@@ -104,7 +104,7 @@ char	*set_textures(char *str)
 	char	*new;
 
 	if (str == NULL)
-		exit(printf("Wrong, texturex path!\nError\n"));
+		return (NULL);
 	new = ft_strtrim(str, "NSOWEA ");
 	free(str);
 	return (new);

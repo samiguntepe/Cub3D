@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:26:47 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/25 13:46:05 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:44:56 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ void	ft_strcpy(char **destination, const char *source)
 	{
 		*destination = malloc(sizeof(char) * ft_strlen(source) + 1);
 		if (*destination == NULL)
-		{
-			printf("Error\n");
 			return ;
-		}
 	}
 	i = 0;
 	while (source[i] != '\0')

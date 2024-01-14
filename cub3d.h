@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 16:51:05 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:01:59 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,22 +180,20 @@ void	map_size(t_file *fl);
 void	str_cpy(char *destination, const char *source);
 void	map_control(t_file *fl);
 void	map_name_control(char *map_name);
-void	double_array_free(char **arr, int len);
-void	game_free(t_game *g);
-void	doubleint_array_free(int **arr, int len);
+void	double_array_free(char **arr);
 int		control_rgb_comma(char *code);
 int		split_and_validate_rgb(const char *code);
 int		count_commas(const char *code);
 int		validate_number(int num);
 void	sur_control(t_file *fl);
-char	**loc_around_space(t_file *fl, char **spc_map, int i);
+void	loc_around_space(t_file *fl, int i);
 void	test(t_file *fl, int map_h);
 int		space_diagon(t_file *fl, int row, int col, int rows);
 int		is_map_valid(t_file *fl, int rows);
 void	fill_row_map_data(char *row, const char *map_row, size_t max_length);
 void	init_row_spaces(char *row, size_t length);
 size_t	find_max_len(t_file *fl);
-char	**around_space(t_file *fl, char **spc_map);
+void	around_space(t_file *fl);
 int		check_map_char(t_file *fl, int rows);
 void	fill_row_len(t_file *fl, int rows);
 void	loc_row_len(t_file *fl, int rows);
@@ -209,5 +207,10 @@ void	init_t_raycast(t_raycast *raycast);
 void	init_t_game(t_game *game);
 void	upload_image(t_game *g);
 void	next(t_game *g);
+void	free_space_map(char **spc_map);
+void	free_game(t_game *game);
+void	free_file(t_file *file);
+void	free_texture(t_texture *tex);
+void	free_image(t_image *img);
 
 #endif

@@ -6,35 +6,38 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 12:47:27 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 19:40:55 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	**loc_around_space(t_file *fl, char **spc_map, int i)
+void	loc_around_space(t_file *fl, int i)
 {
 	int	len;
 
 	len = 0;
-	spc_map = malloc((fl->map_h + 3) * sizeof(char *));
-	len = fl->map_h + 3;
+	fl->spc_map = malloc((fl->map_h + 3) * sizeof(char *));
+	len = fl->map_h + 2;
 	while (i < len)
 	{
-		spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
-		if (i == len - 1)
-			spc_map[i] = NULL;
+		fl->spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
 		i++;
 	}
-	return (spc_map);
+	fl->spc_map[i] = NULL;
 }
 
 void	test(t_file *fl, int map_h)
 {
 	if (is_map_valid(fl, map_h))
-		printf("okey");
+	{
+		free_space_map(fl->spc_map);
+	}
 	else
+	{
+		free_space_map(fl->spc_map);
 		exit(printf("not okey"));
+	}
 }
 
 int	space_diagon(t_file *fl, int row, int col, int rows)
@@ -50,4 +53,21 @@ int	space_diagon(t_file *fl, int row, int col, int rows)
 		&& fl->spc_map[row + 1][col + 1] == ' ')
 		return (1);
 	return (0);
+}
+
+void	free_space_map(char **spc_map)
+{
+	int	i;
+
+	i = 0;
+	if (spc_map == NULL)
+		return ;
+	while (spc_map[i])
+	{
+		free(spc_map[i]);
+		spc_map[i] = NULL;
+		i++;
+	}
+	free(spc_map);
+	spc_map = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:30:33 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 12:36:06 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 14:23:45 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	space_around(t_file *fl, int row, int col, int rows)
 
 void	loc_row_len(t_file *fl, int rows)
 {
-	fl->rowlen = malloc(rows * sizeof(int));
+	fl->rowlen = malloc((rows + 1) * sizeof(int));
 	if (fl->rowlen == NULL)
 	{
 		exit(1);
@@ -46,6 +46,7 @@ void	fill_row_len(t_file *fl, int rows)
 		fl->rowlen[i] = ft_strlen(fl->spc_map[i]);
 		i++;
 	}
+	fl->rowlen[i] = 0;
 }
 
 int	check_map_char(t_file *fl, int rows)

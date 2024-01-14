@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:20:30 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 19:36:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	next(t_game *game)
 	find_player(game->file, game);
 	inits_rgb(game);
 	game->mlxwin = mlx_new_window(game->mlx, SW, SH, "cub3D");
-	game->img = malloc(sizeof(t_image));
 	game->img->img = mlx_new_image(game->mlx, SW, SH);
 	game->img->addr = (int *)mlx_get_data_addr(game->img->img, &n, &n, &n);
 	mlx_hook(game->mlxwin, 2, 1L << 0, move_press, game);

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 16:49:08 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 19:54:23 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void	inits_rgb(t_game *g)
 	g->text.ceiling
 		= create_rgb(ft_atoi(ptr_c[0]),
 			ft_atoi(ptr_c[1]), ft_atoi(ptr_c[2]));
-	double_array_free(ptr_f, 3);
-	double_array_free(ptr_c, 3);
+	double_array_free(ptr_f);
+	double_array_free(ptr_c);
 }

@@ -6,43 +6,20 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:37:07 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:22:34 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	game_free(t_game *g)
-{
-	int	len;
-
-	len = line_counter(g->file->whole_lines);
-	free(g->file->no);
-	free(g->file->we);
-	free(g->file->ea);
-	free(g->file->so);
-	free(g->file->f);
-	free(g->file->c);
-	double_array_free(g->file->map, g->file->map_h);
-	double_array_free(g->file->lines, len);
-	free(g->file->whole_lines);
-	mlx_destroy_image(g->mlx, g->text.imgea);
-	mlx_destroy_image(g->mlx, g->text.imgno);
-	mlx_destroy_image(g->mlx, g->text.imgwe);
-	mlx_destroy_image(g->mlx, g->text.imgso);
-	mlx_destroy_image(g->mlx, g->img);
-	mlx_destroy_window(g->mlx, g->mlxwin);
-	free(g->file);
-}
-
-void	double_array_free(char **arr, int len)
+void	double_array_free(char **arr)
 {
 	int	i;
 
 	i = 0;
 	if (arr == NULL)
 		return ;
-	while (i < len)
+	while (arr[i])
 	{
 		free(arr[i]);
 		i++;
@@ -50,30 +27,60 @@ void	double_array_free(char **arr, int len)
 	free(arr);
 }
 
-void	doubleint_array_free(int **arr, int len)
+void	free_image(t_image *img)
 {
-	int	i;
+	if (img)
+	{
+		free(img);
+	}
+}
 
-	i = 0;
-	if (arr == NULL)
+void	free_texture(t_texture *tex)
+{
+	if (tex)
 	{
-		return ;
+		free_image(tex->imgno);
+		free_image(tex->imgso);
+		free_image(tex->imgwe);
+		free_image(tex->imgea);
 	}
-	if (len == 0)
+}
+
+void	free_file(t_file *file)
+{
+	if (file)
 	{
-		free(arr[0]);
-		arr[0] = NULL;
-		free(arr[1]);
-		arr[1] = NULL;
-		free(arr[2]);
-		arr[2] = NULL;
+		double_array_free(file->map);
+		free(file->no);
+		free(file->so);
+		free(file->we);
+		free(file->ea);
+		free(file->f);
+		free(file->c);
+		double_array_free(file->lines);
+		free(file->whole_lines);
+		free(file->rowlen);
+		free(file);
 	}
-	while (i < len)
+}
+
+void	free_game(t_game *game)
+{
+	if (game)
 	{
-		free(arr[i]);
-		arr[i] = NULL;
-		i++;
+		if (game->text.imgno && game->text.imgno->img)
+			mlx_destroy_image(game->mlx, game->text.imgno->img);
+		if (game->text.imgso && game->text.imgso->img)
+			mlx_destroy_image(game->mlx, game->text.imgso->img);
+		if (game->text.imgea && game->text.imgea->img)
+			mlx_destroy_image(game->mlx, game->text.imgea->img);
+		if (game->text.imgwe && game->text.imgwe->img)
+			mlx_destroy_image(game->mlx, game->text.imgwe->img);
+		if (game->img && game->img->img)
+			mlx_destroy_image(game->mlx, game->img->img);
+		free_texture(&(game->text));
+		free_file(game->file);
+		if (game->mlx && game->mlxwin)
+			mlx_destroy_window(game->mlx, game->mlxwin);
 	}
-	free(arr);
-	arr = NULL;
 }

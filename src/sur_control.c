@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:46 by sguntepe          #+#    #+#             */
-/*   Updated: 2023/12/28 15:38:20 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:56:37 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ void	sur_control(t_file *fl)
 {
 	int		len;
 
-	fl->spc_map = NULL;
 	fl->max_len = find_max_len(fl);
-	fl->spc_map = loc_around_space(fl, fl->spc_map, 0);
-	fl->spc_map = around_space(fl, fl->spc_map);
+	loc_around_space(fl, 0);
+	around_space(fl);
 	len = fl->map_h + 2;
 	test(fl, len);
 }
@@ -65,25 +64,28 @@ int	is_map_valid(t_file *fl, int rows)
 	loc_row_len(fl, rows);
 	fill_row_len(fl, rows);
 	isvalid = check_map_char(fl, rows);
-	free(fl->rowlen);
+	if (fl != NULL && fl->rowlen != 0)
+	{
+		free(fl->rowlen);
+		fl->rowlen = 0;
+	}
 	return (isvalid);
 }
 
-char	**around_space(t_file *fl, char **spc_map)
+void	around_space(t_file *fl)
 {
 	int		i;
 	int		k;
 
-	init_row_spaces(spc_map[0], fl->max_len + 2);
+	init_row_spaces(fl->spc_map[0], fl->max_len + 2);
 	i = 0;
 	k = 1;
 	while (i < fl->map_h)
 	{
-		fill_row_map_data(spc_map[k], fl->map[i], fl->max_len);
+		fill_row_map_data(fl->spc_map[k], fl->map[i], fl->max_len);
 		i++;
 		k++;
 	}
-	init_row_spaces(spc_map[fl->map_h + 1], fl->max_len + 2);
-	spc_map[fl->map_h + 2] = NULL;
-	return (spc_map);
+	init_row_spaces(fl->spc_map[fl->map_h + 1], fl->max_len + 2);
+	fl->spc_map[fl->map_h + 2] = NULL;
 }

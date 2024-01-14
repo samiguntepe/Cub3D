@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:36:27 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 14:39:33 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:26:35 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	close_window(void *game)
 {
-	t_game	*g;
-
-	g = (t_game *)game;
-	mlx_destroy_window(g->mlx, g->mlxwin);
-	exit(1);
+	printf("\033[0;35mGame is closed!\033[0m\n");
+	exit_game(game, NULL);
 	return (0);
 }

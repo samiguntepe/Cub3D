@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:30:33 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:39:43 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:51:43 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	loc_row_len(t_file *fl, int rows)
 {
 	fl->rowlen = malloc((rows + 1) * sizeof(int));
 	if (fl->rowlen == NULL)
+	{
+		double_array_free(fl->spc_map);
 		exit_game(fl->game, "Allocation is failed!");
+	}
 }
 
 void	fill_row_len(t_file *fl, int rows)

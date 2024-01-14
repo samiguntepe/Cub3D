@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 22:36:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:49:35 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	double_array_free(char **arr)
 
 void	exit_game(t_game *game, char *msg)
 {
-	if(msg)
+	if (msg)
 	{
+		printf("%s", RED);
 		printf("%s Error\n", msg);
+		printf("%s", CODE);
 		free_game(game);
 		exit(1);
 	}

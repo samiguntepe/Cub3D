@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:48:25 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:57:41 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void	inits(t_game *game)
 {
 	game->file = init_t_file();
+	if (game->file == NULL)
+		exit_game(game, "Allocation is failed!");
 	game->img = init_t_image();
+	if (game->img == NULL)
+		exit_game(game, "Allocation is failed!");
 	init_t_texture(&game->text);
 	texture_init(game);
 	init_t_game(game);
@@ -53,17 +57,16 @@ void	texture_init(t_game *g)
 {
 	g->text.imgno = malloc(sizeof(t_image));
 	if (!g->text.imgno)
-		exit(printf("Error\n"));
-		exit_game(g, "");
+		exit_game(g, "Allocation is failed!");
 	g->text.imgso = malloc(sizeof(t_image));
 	if (!g->text.imgso)
-		exit(printf("Error\n"));
+		exit_game(g, "Allocation is failed!");
 	g->text.imgwe = malloc(sizeof(t_image));
 	if (!g->text.imgwe)
-		exit(printf("Error\n"));
+		exit_game(g, "Allocation is failed!");
 	g->text.imgea = malloc(sizeof(t_image));
 	if (!g->text.imgea)
-		exit(printf("Error\n"));
+		exit_game(g, "Allocation is failed!");
 }
 
 void	inits_rgb(t_game *g)

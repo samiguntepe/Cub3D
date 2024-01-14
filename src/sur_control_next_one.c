@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:29:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:38:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:48:13 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@ void	loc_around_space(t_file *fl, int i)
 {
 	int	len;
 
-	len = 0;
-	fl->spc_map = malloc((fl->map_h + 3) * sizeof(char *));
 	len = fl->map_h + 2;
+	fl->spc_map = malloc((len + 1) * sizeof(char *));
+	if (!fl->spc_map)
+		exit_game(fl->game, "Allocation is failed!");
 	while (i < len)
 	{
 		fl->spc_map[i] = malloc((fl->max_len + 3) * sizeof(char));
+		if (!fl->spc_map[i])
+		{
+			while (i > 0)
+				free(fl->spc_map[--i]);
+			free(fl->spc_map);
+			exit_game(fl->game, "Allocation is failed!");
+		}
 		i++;
 	}
 	fl->spc_map[i] = NULL;

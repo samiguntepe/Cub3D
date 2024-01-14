@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:11:20 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 22:24:42 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:48:32 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ int	move_press(int key_code, t_game *g)
 {
 	if (key_code == 53)
 	{
-		free_game(g);
-		printf("Game is closed.\n");
-		exit(0);
+		printf("\033[0;35mGame is closed!\033[0m\n");
+		exit_game(g, NULL);
 	}
 	if (key_code == 13)
 		g->w = true;
@@ -50,10 +49,4 @@ int	move_release(int key_code, t_game *g)
 	if (key_code == 123)
 		g->left = false;
 	return (0);
-}
-
-int	press_close_key(void)
-{
-	printf("\n\033[0;35mGame is closed!\033[0m\n");
-	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:18:51 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:53:19 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define SW 1024
 # define SH 768
 # define BUFFER_SIZE 1024
+# define RED "\033[0;31m"
+# define CODE "\033[m"
 
 typedef struct s_game t_game;
 
@@ -142,7 +144,6 @@ void	playerpos_ns(t_file *fl, t_game *g, int i, int j);
 void	playerpos_we(t_file *fl, t_game *g, int i, int j);
 void	inits_rgb(t_game *g);
 int		create_rgb(int r, int g, int b);
-int		press_close_key(void);
 int		close_window(void *game);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
@@ -177,8 +178,7 @@ char	*ft_strstr(const char *str, const char *substr);
 int		control_components(char *map_line, int len, int count, int isspace);
 void	map_size(t_file *fl);
 void	str_cpy(char *destination, const char *source);
-void	map_control(t_file *fl);
-void	map_name_control(char *map_name);
+void	map_name_control(char *map_name, t_game *game);
 void	double_array_free(char **arr);
 int		control_rgb_comma(char *code);
 int		split_and_validate_rgb(const char *code);

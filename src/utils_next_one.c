@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:17:34 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/04 16:52:58 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:35:14 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-void	map_name_control(char *map_name)
+void	map_name_control(char *map_name, t_game *game)
 {
 	int	len;
 
@@ -70,16 +70,16 @@ void	map_name_control(char *map_name)
 				if (map_name[--len] == '.')
 					;
 				else
-					exit(printf("Wrong, map name!"));
+					exit_game(game, "Wrong, map name!");
 			}
 			else
-				exit(printf("Wrong, map name!"));
+				exit_game(game, "Wrong, map name!");
 		}
 		else
-			exit(printf("Wrong, map name!"));
+			exit_game(game, "Wrong, map name!");
 	}
 	else
-		exit(printf("Wrong, map name!"));
+		exit_game(game, "Wrong, map name!");
 }
 
 int	create_rgb(int r, int g, int b)

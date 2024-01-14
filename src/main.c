@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 22:34:00 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:55:01 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit(printf("Wrong, arguments count!"));
+		exit(printf(RED"Wrong, arguments count! Error\n"CODE));
 	game.mlx = mlx_init();
 	inits(&game);
-	map_name_control(argv[1]);
+	map_name_control(argv[1], &game);
 	game.file->fd = open(argv[1], O_RDONLY);
 	if (game.file->fd == -1)
 	{
 		exit_game(&game, "File can't open!");
-		free_game(&game);
 		return (0);
 	}
 	next(&game);

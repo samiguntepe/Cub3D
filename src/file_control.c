@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/14 23:46:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 01:49:15 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,4 @@ void	control_companent(t_file *fl, int i, int j)
 		exit_game(fl->game, "Wrong window size!");
 	if (count > 1 || count == 0)
 		exit_game(fl->game, "Map is wrong!");
-		
 }

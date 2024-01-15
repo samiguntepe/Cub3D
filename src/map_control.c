@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:12:57 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:15:10 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,22 @@ int	control_rgb_path(char *mainStr, char *subStr, size_t i, size_t j)
 		i++;
 	}
 	return (0);
+}
+
+void	control_companent_count(t_file *fl, int i)
+{
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (fl->lines[i])
+	{
+		if (fl->lines[i][0] == 'F' || fl->lines[i][0] == 'C'
+			|| fl->lines[i][0] == 'N' || fl->lines[i][0] == 'S'
+			|| fl->lines[i][0] == 'W' || fl->lines[i][0] == 'E')
+			count++;
+		i++;
+	}
+	if (count > 6)
+		exit_game(fl->game, "Wrong, companents count!");
 }

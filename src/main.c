@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 12:22:02 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:19:02 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	next(t_game *game)
 
 	file_parcer(game->file);
 	control_companent(game->file, 0, 0);
+	control_companent_count(game->file, 0);
 	inits_rgb(game);
 	game->mlx = mlx_init();
 	find_player(game->file, game);

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 12:24:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:21:26 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ void	exit_game(t_game *game, char *msg)
 		printf(RED"%s Error"CODE, msg);
 		printf("\n");
 		free_game(game);
-		system("leaks cub3D");
 		exit(1);
 	}
 	else
 	{
 		free_game(game);
-		system("leaks cub3D");
 		exit(0);
 	}
 }

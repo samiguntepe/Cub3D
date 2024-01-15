@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 13:09:53 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:16:16 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ int	split_and_validate_rgb(const char *code)
 
 void	control_rgb_comma(char *code, t_game *game)
 {
+	int	required_commas;
+
 	if (code == NULL)
 		exit_game(game, "Wrong, RGB path!");
-	const int	required_commas = 2;
-
+	required_commas = 2;
 	if (count_commas(code) != required_commas)
 		exit_game(game, "Wrong, RGB path!");
 	if (!split_and_validate_rgb(code))

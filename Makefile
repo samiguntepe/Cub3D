@@ -6,7 +6,7 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2024/01/04 13:34:22 by sguntepe         ###   ########.fr        #
+#    Updated: 2024/01/15 16:20:38 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS    	= ./src/main.c ./src/read_file.c ./src/file_parcer.c \
 			 ./src/player_find.c ./src/sur_control.c ./src/sur_control_next.c \
 			 ./src/leaks.c ./src/file_control.c ./src/sur_control_next_one.c \
 			 ./src/exit_map.c ./src/inits_next.c
-OBJS    	= $(addprefix obj/, $(SRCS:.c=.o))
+OBJS    	= $(SRCS:.c=.o)
 OFLAGS		= -framework OpenGL -framework AppKit
 MINILIBX	= ./minilibx/libmlx.a
 GREEN   	= \033[0;32m
@@ -40,7 +40,7 @@ $(NAME):  $(OBJS) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OFLAGS) $(OBJS) $(MINILIBX) -o $@
 	@echo "$(GREEN)[✓]$(CODE)"
 
-obj/%.o: %.c
+%.o: %.c
 	@$(CC) $(CFLAGS)  -c $< -o $@
 
 $(MINILIBX):

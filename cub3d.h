@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:16:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:09:29 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ struct s_game
 	t_texture	text;
 	t_raycast	ray;
 	t_file		*file;
+	int			control;
 };
 
 int		move_press(int key_code, t_game *g);
@@ -163,9 +164,7 @@ int		line_counter(const char *str);
 int		get_line_length(const char *str, int line_number, char sep);
 void	copy_rgb(t_file *fl, int comma_count, char type, int i);
 void	find_rgb(t_file *fl, int f_count, int c_count, int i);
-char	*set_rgb(char *str, int i, int count);
 int		control_rgb_path(char *mainStr, char *subStr, size_t i, size_t j);
-int		control_rgb_comma(char *kod);
 char	**ft_split(char const *s, char c);
 int		wordcounter(const char *s, char delimiter);
 void	*ft_memset(void *b, int c, size_t len);
@@ -176,9 +175,9 @@ char	*ft_strstr(const char *str, const char *substr);
 int		control_components(char *map_line, int len, int count, int isspace);
 void	map_size(t_file *fl);
 void	str_cpy(char *destination, const char *source);
-void	map_name_control(char *map_name, t_game *game);
+void	map_name_control(char *map_name);
 void	double_array_free(char **arr);
-int		control_rgb_comma(char *code);
+void	control_rgb_comma(char *code, t_game *game);
 int		split_and_validate_rgb(const char *code);
 int		count_commas(const char *code);
 int		validate_number(int num);

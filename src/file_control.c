@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:05:28 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:09:53 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ int	split_and_validate_rgb(const char *code)
 	return (1);
 }
 
-int	control_rgb_comma(char *code)
+void	control_rgb_comma(char *code, t_game *game)
 {
+	if (code == NULL)
+		exit_game(game, "Wrong, RGB path!");
 	const int	required_commas = 2;
 
 	if (count_commas(code) != required_commas)
-		return (1);
+		exit_game(game, "Wrong, RGB path!");
 	if (!split_and_validate_rgb(code))
-		return (1);
-	return (0);
+		exit_game(game, "Wrong, RGB path!");
 }
 
 int	validate_number(int num)

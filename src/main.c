@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:52 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:02:45 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:22:02 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		exit(printf(RED"Wrong, arguments count! Error\n"CODE));
-	game.mlx = mlx_init();
+	map_name_control(argv[1]);
 	inits(&game);
-	map_name_control(argv[1], &game);
 	game.file->fd = open(argv[1], O_RDONLY);
 	if (game.file->fd == -1)
 	{
@@ -40,9 +39,11 @@ void	next(t_game *game)
 
 	file_parcer(game->file);
 	control_companent(game->file, 0, 0);
-	upload_image(game);
-	find_player(game->file, game);
 	inits_rgb(game);
+	game->mlx = mlx_init();
+	find_player(game->file, game);
+	game->control = 1;
+	upload_image(game);
 	game->mlxwin = mlx_new_window(game->mlx, SW, SH, "cub3D");
 	game->img->img = mlx_new_image(game->mlx, SW, SH);
 	game->img->addr = (int *)mlx_get_data_addr(game->img->img, &n, &n, &n);

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:12:09 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:24:21 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@ void	exit_game(t_game *game, char *msg)
 {
 	if (msg)
 	{
-		printf("%s", RED);
-		printf("%s Error\n", msg);
-		printf("%s", CODE);
+		printf(RED"%s Error"CODE, msg);
+		printf("\n");
 		free_game(game);
+		system("leaks cub3D");
 		exit(1);
 	}
 	else
 	{
 		free_game(game);
+		system("leaks cub3D");
 		exit(0);
 	}
 }
@@ -79,18 +80,21 @@ void	free_game(t_game *game)
 {
 	if (game)
 	{
-		if (game->text.imgno && game->text.imgno->img)
-			mlx_destroy_image(game->mlx, game->text.imgno->img);
-		if (game->text.imgso && game->text.imgso->img)
-			mlx_destroy_image(game->mlx, game->text.imgso->img);
-		if (game->text.imgea && game->text.imgea->img)
-			mlx_destroy_image(game->mlx, game->text.imgea->img);
-		if (game->text.imgwe && game->text.imgwe->img)
-			mlx_destroy_image(game->mlx, game->text.imgwe->img);
-		if (game->img && game->img->img)
-			mlx_destroy_image(game->mlx, game->img->img);
+		if (game->control)
+		{
+			if (game->text.imgno && game->text.imgno->img)
+				mlx_destroy_image(game->mlx, game->text.imgno->img);
+			if (game->text.imgso && game->text.imgso->img)
+				mlx_destroy_image(game->mlx, game->text.imgso->img);
+			if (game->text.imgea && game->text.imgea->img)
+				mlx_destroy_image(game->mlx, game->text.imgea->img);
+			if (game->text.imgwe && game->text.imgwe->img)
+				mlx_destroy_image(game->mlx, game->text.imgwe->img);
+		}
 		free_texture(&(game->text));
 		free_file(game->file);
+		if (game->img && game->img->img)
+			mlx_destroy_image(game->mlx, game->img->img);
 		if (game->mlx && game->mlxwin)
 			mlx_destroy_window(game->mlx, game->mlxwin);
 	}

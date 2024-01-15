@@ -6,11 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:17:34 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:14:39 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:44:58 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 char	*ft_strstr(const char *str, const char *substr)
 {
@@ -55,7 +57,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-void	map_name_control(char *map_name, t_game *game)
+void	map_name_control(char *map_name)
 {
 	int	len;
 
@@ -69,16 +71,16 @@ void	map_name_control(char *map_name, t_game *game)
 				if (map_name[--len] == '.')
 					;
 				else
-					exit_game(game, "Wrong, map name!");
+					exit(printf(RED"Wrong, map name! Error\n"CODE));
 			}
 			else
-				exit_game(game, "Wrong, map name!");
+				exit(printf(RED"Wrong, map name! Error\n"CODE));
 		}
 		else
-			exit_game(game, "Wrong, map name!");
+			exit(printf(RED"Wrong, map name! Error\n"CODE));
 	}
 	else
-		exit_game(game, "Wrong, map name!");
+		exit(printf(RED"Wrong, map name! Error\n"CODE));
 }
 
 int	create_rgb(int r, int g, int b)

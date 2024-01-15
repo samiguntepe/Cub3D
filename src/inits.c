@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:56 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:03:19 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:17:33 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_file	*init_t_file(void)
 	new_file->map_h = 0;
 	new_file->map_w = 0;
 	new_file->line_count = 0;
-	new_file->fd = -1;
 	new_file->rowlen = NULL;
 	new_file->spc_map = NULL;
 	new_file->max_len = 0;
@@ -100,6 +99,8 @@ void	init_t_raycast(t_raycast *raycast)
 
 void	init_t_game(t_game *game)
 {
+	game->mlx = NULL;
+	game->mlxwin = NULL;
 	game->w = false;
 	game->a = false;
 	game->s = false;
@@ -110,4 +111,5 @@ void	init_t_game(t_game *game)
 	game->rspeed = 0.05f;
 	game->text.text_h = 64;
 	game->text.text_w = 64;
+	game->control = 0;
 }

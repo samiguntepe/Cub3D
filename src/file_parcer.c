@@ -6,12 +6,13 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 02:07:09 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:08:42 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	file_parcer(t_file *file)
 {
@@ -20,8 +21,8 @@ void	file_parcer(t_file *file)
 	file->lines = split_lines(file->whole_lines, file->line_count, 0, 0);
 	find_textures(file, 0);
 	find_rgb(file, 0, 0, 0);
-	file->f = set_rgb(file->f, 0, 0);
-	file->c = set_rgb(file->c, 0, 0);
+	control_rgb_comma(file->f, file->game);
+	control_rgb_comma(file->c, file->game);
 	if (file->f == NULL || file->c == NULL)
 		exit_game(file->game, "Wrong RGB path!");
 	file->ea = set_textures(file->ea);
@@ -34,35 +35,6 @@ void	file_parcer(t_file *file)
 	map_size(file);
 	find_map(file);
 	sur_control(file);
-}
-
-char	*set_rgb(char *str, int i, int count)
-{
-	char	temp[12];
-	char	*new;
-
-	i = 1;
-	count = 0;
-	new = NULL;
-	if (str == NULL)
-		return (NULL);
-	while (str[i] != '\0')
-	{
-		if ((str[i] > 32 && count < 11) || (str[i] >= '0' && str[i] <= '9'))
-		{
-			temp[count] = str[i];
-			count++;
-		}
-		i++;
-	}
-	temp[count] = '\0';
-	if (control_rgb_comma(temp))
-		return (NULL);
-	ft_strcpy(&new, temp);
-	if (!control_rgb_path(str, new, 0, 0))
-		return (NULL);
-	free(str);
-	return (new);
 }
 
 void	find_map(t_file *fl)

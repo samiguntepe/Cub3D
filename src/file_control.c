@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 11:53:29 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 16:16:16 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:21:28 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	split_and_validate_rgb(const char *code)
 	return (1);
 }
 
+#include <stdio.h>
 void	control_rgb_comma(char *code, t_game *game)
 {
 	int	required_commas;

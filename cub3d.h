@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 16:11:45 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:30:18 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,6 @@ void	free_file(t_file *file);
 void	free_texture(t_texture *tex);
 void	exit_game(t_game *game, char *msg);
 void	control_companent_count(t_file *fl, int i);
+int		atoi_control(char **str);
 
 #endif

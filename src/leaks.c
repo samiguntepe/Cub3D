@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 16:21:26 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:57:53 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void	free_game(t_game *game)
 	{
 		if (game->control)
 		{
-			if (game->text.imgno && game->text.imgno->img)
+			if (game->text.imgno->img)
 				mlx_destroy_image(game->mlx, game->text.imgno->img);
-			if (game->text.imgso && game->text.imgso->img)
+			if (game->text.imgso->img)
 				mlx_destroy_image(game->mlx, game->text.imgso->img);
-			if (game->text.imgea && game->text.imgea->img)
+			if (game->text.imgea->img)
 				mlx_destroy_image(game->mlx, game->text.imgea->img);
-			if (game->text.imgwe && game->text.imgwe->img)
+			if (game->text.imgwe->img)
 				mlx_destroy_image(game->mlx, game->text.imgwe->img);
 		}
 		free_texture(&(game->text));

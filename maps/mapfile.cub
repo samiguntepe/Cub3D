@@ -1,10 +1,10 @@
-NO ./textures/42N.xpm
-WE ./textures/42W.xpm
-SO ./textures/42S.xpm 
-EA ./textures/42E.xpm
+NO    ./textures/42N.xpm
+WE   ./textures/42W.xpm
+SO    ./textures/42S.xpm 
+EA     ./textures/42E.xpm
 
 F 238,173,142
-C 50,50,50
+C 000000,0000038,38
 
 
         1111111111111111111111111

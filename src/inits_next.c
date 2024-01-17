@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 12:43:15 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 17:40:39 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/17 16:57:11 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,23 @@ void	texture_init(t_game *g)
 	g->text.imgso->img = NULL;
 }
 #include <stdio.h>
-
 void	inits_rgb(t_game *g)
 {
 	char	**ptr_f;
 	char	**ptr_c;
+
 	ptr_f = ft_split(g->file->f, ',');
 	ptr_c = ft_split(g->file->c, ',');
-	printf("%d", ft_atoi(ptr_c[0]));
-
+	printf("%s", ptr_c[0]);
 	g->text.floor
 		= create_rgb(ft_atoi(ptr_f[0]),
 			ft_atoi(ptr_f[1]), ft_atoi(ptr_f[2]));
 	g->text.ceiling
 		= create_rgb(ft_atoi(ptr_c[0]),
 			ft_atoi(ptr_c[1]), ft_atoi(ptr_c[2]));
-
-	if (atoi_control(ptr_c))
+	if (atoi_control(ptr_c) || atoi_control(ptr_f))
 	{
 		double_array_free(ptr_c);
-		exit_game(g, "Wrong, RGB path!");
-	}
-	else if (atoi_control(ptr_f))
-	{
 		double_array_free(ptr_f);
 		exit_game(g, "Wrong, RGB path!");
 	}
@@ -106,7 +100,6 @@ void	inits_rgb(t_game *g)
 		double_array_free(ptr_f);
 		double_array_free(ptr_c);
 	}
-		
 	return ;
 }
 
@@ -123,8 +116,8 @@ int	atoi_control(char **str)
 		{
 			if (str[i][j] < '0' || str[i][j] > '9')
 			{
-				
-				return (1);
+				if (str[i][j] != ',')
+					return (1);
 			}
 			j++;
 		}

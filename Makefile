@@ -6,7 +6,7 @@
 #    By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 09:07:02 by sguntepe          #+#    #+#              #
-#    Updated: 2024/01/15 16:20:38 by sguntepe         ###   ########.fr        #
+#    Updated: 2024/01/17 15:08:57 by sguntepe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,7 @@ PURPLE		= \033[0;35m
 CYAN		= \033[0;36m
 CODE    	= \033[m
 
-all: obj $(NAME)
-
-obj:
-	@mkdir -p obj/./src/
-
+all: $(NAME)
 
 $(NAME):  $(OBJS) $(MINILIBX)
 	@$(CC) $(CFLAGS) $(OFLAGS) $(OBJS) $(MINILIBX) -o $@

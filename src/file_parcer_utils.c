@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 10:47:48 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 17:15:48 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:04:57 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,22 @@ void	copy_rgb(t_file *fl, int comma_count, char type, int i)
 	if (type == 'F')
 	{
 		if (comma_count == 2)
+		{
+			fl->lines[i]++;
+			while (*fl->lines[i] <= 32)
+				fl->lines[i]++;
 			ft_strcpy(&(fl->f), fl->lines[i]);
+		}
 	}
 	else if (type == 'C')
 	{
 		if (comma_count == 2)
+		{
+			fl->lines[i]++;
+			while (*fl->lines[i] <= 32)
+				fl->lines[i]++;
 			ft_strcpy(&(fl->c), fl->lines[i]);
+		}
 	}
 	else
 		exit_game(fl->game, "Wrong, textures path!");

@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 09:45:25 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/18 14:40:21 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:51:34 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ void	exit_game(t_game *game, char *msg)
 	{
 		printf(RED"%s Error"CODE, msg);
 		printf("\n");
+		close(game->file->fd);
 		free_game(game);
 		exit(1);
 	}
 	else
 	{
+		close(game->file->fd);
 		free_game(game);
 		exit(0);
 	}

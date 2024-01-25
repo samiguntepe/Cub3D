@@ -6,13 +6,12 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:38:03 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 13:08:42 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:09:00 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 void	file_parcer(t_file *file)
 {
@@ -25,6 +24,7 @@ void	file_parcer(t_file *file)
 	control_rgb_comma(file->c, file->game);
 	if (file->f == NULL || file->c == NULL)
 		exit_game(file->game, "Wrong RGB path!");
+	rgb_is_number(file, 0, 0);
 	file->ea = set_textures(file->ea);
 	file->we = set_textures(file->we);
 	file->so = set_textures(file->so);

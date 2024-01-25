@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:50 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 16:15:10 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:38:17 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,6 @@ int	control_components(char *map_line, int len, int count, int isspace)
 	return (0);
 }
 
-int	control_rgb_path(char *mainStr, char *subStr, size_t i, size_t j)
-{
-	i = 0;
-	while (i <= (ft_strlen(mainStr)) - (ft_strlen(subStr)))
-	{
-		j = 0;
-		if (mainStr[i] == subStr[0])
-		{
-			while (j < (ft_strlen(subStr)) && mainStr[i + j] == subStr[j])
-				j++;
-			if (j == (ft_strlen(subStr)))
-			{
-				while (mainStr[i + j] != '\0')
-				{
-					if (mainStr[i + j] > 32)
-						return (0);
-					j++;
-				}
-				return (1);
-			}
-		}
-		i++;
-	}
-	return (0);
-}
-
 void	control_companent_count(t_file *fl, int i)
 {
 	int	count;
@@ -82,4 +56,24 @@ void	control_companent_count(t_file *fl, int i)
 	}
 	if (count > 6)
 		exit_game(fl->game, "Wrong, companents count!");
+}
+
+void	rgb_is_number(t_file *fl, int i, int j)
+{
+	while (fl->lines[i])
+	{
+		if ((fl->lines[i][0] == 'F' && fl->lines[i][1] == ' ')
+			|| (fl->lines[i][0] == 'C' && fl->lines[i][1] == ' '))
+		{
+			j = 2;
+			while (fl->lines[i][j])
+			{
+				if (!((fl->lines[i][j] >= '0' && fl->lines[i][j] <= '9')
+					|| (fl->lines[i][j] == ',' || fl->lines[i][j] == ' ')))
+					exit_game(fl->game, "Wrong, RGB path!");
+				j++;
+			}
+		}
+		i++;
+	}
 }

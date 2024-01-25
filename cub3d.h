@@ -6,7 +6,7 @@
 /*   By: sguntepe <@student.42kocaeli.com.tr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 09:06:58 by sguntepe          #+#    #+#             */
-/*   Updated: 2024/01/15 17:30:18 by sguntepe         ###   ########.fr       */
+/*   Updated: 2024/01/25 11:38:24 by sguntepe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ int		line_counter(const char *str);
 int		get_line_length(const char *str, int line_number, char sep);
 void	copy_rgb(t_file *fl, int comma_count, char type, int i);
 void	find_rgb(t_file *fl, int f_count, int c_count, int i);
-int		control_rgb_path(char *mainStr, char *subStr, size_t i, size_t j);
 char	**ft_split(char const *s, char c);
 int		wordcounter(const char *s, char delimiter);
 void	*ft_memset(void *b, int c, size_t len);
@@ -209,6 +208,6 @@ void	free_file(t_file *file);
 void	free_texture(t_texture *tex);
 void	exit_game(t_game *game, char *msg);
 void	control_companent_count(t_file *fl, int i);
-int		atoi_control(char **str);
+void	rgb_is_number(t_file *fl, int i, int j);
 
 #endif
